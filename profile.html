@@ -11,10 +11,9 @@
     <link rel="stylesheet" type="text/css" href="style/style.css">
     <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
 </head>
-<body>
+<body onload="authorize(), showProfile()">
     <div class="container">
-        <p class="row mx-2 mt-4 mb-2 border border-success rounded p-1 justify-content-md-center text-secondary">
-        Welcome! This is the message bar...
+        <p class="row mx-2 mt-4 mb-2 border border-secondary rounded justify-content-md-center text-secondary" id="messageBarId">
         </p>
         <div class="row mt-1 mx-2 border border-2 border-success rounded">
             <div class="col-12 p-0">
@@ -48,7 +47,7 @@
                                       <li><a class="dropdown-item" href="profile.html">My Account</a></li>
                                       <li><a class="dropdown-item" href="search.html">Search</a></li>
                                       <li><a class="dropdown-item" href="#">Wishlist</a></li>
-                                      <li><a class="dropdown-item" href="#">Shopping Cart</a></li>
+                                      <li><a class="dropdown-item" href="cart.html">Shopping Cart</a></li>
                                     </ul>
                                   </li>
                             </ul>
@@ -84,38 +83,21 @@
                 <div class="col-12 col-md-8 col-lg-5 px-3 d-flex align-items-center flex-column">
                     <h4 class="mb-4 text-center">My Profile</h4>
                     <div class="col-9  border border-2 border-secondary rounded display1">
-                        <table class="table  border-secondary table-striped table-light text-center w-100 mb-5">
-                            <thead>
-                                <tr>
-                                    <th scope="col"><i class="bi bi-book text-primary"></i></th>
-                                    <th scope="col"><i class="bi bi-clipboard-data text-primary"></i></th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <tr>
-                                    <td>Name:</td>
-                                    <td>VasyShop</td>
-                                </tr>
-                                <tr>
-                                    <td>Email:</td>
-                                    <td>VasyShop@mail.com</td>
-                                </tr>
-                                <tr>
-                                    <td>Age:</td>
-                                    <td>36</td>
-                                </tr>
-                                <tr>
-                                    <td>Gender:</td>
-                                    <td>Male</td>
-                                </tr>
-
-                            </tbody>
-                        </table>
-                        <button type="button" class="btn btn-outline-primary">Change Name</button>
+                        <div id="myprofileId" class="col-12">
+                            
+                        </div>
+                        <div class="d-flex col-12 justify-content-around">
+                            <!-- <div>
+                                <button type="button" class="btn btn-outline-primary">Change Name</button>
+                            </div> -->
+                            <div>
+                                <button type="button" class="btn btn-outline-primary" onclick="logOut()">Log Out</button>
+                            </div>
+                        </div>
                         <div class="form-floating mb-3 mt-4 w-75 display2">
                             <input type="text" class="form-control text-primary" id="changeName" placeholder="New Name">
                             <label for="changeName">New Name</label>
-                          </div>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -139,9 +121,17 @@
         </div>
     </div>
 
+    
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
         crossorigin="anonymous">
     </script>
+    <script src="script/user.js"></script>
+    <script src="script/product.js"></script> 
+    <script src="script/userService.js"></script>   
+    <script src="script/productService.js"></script>
+    <script src="script/commonService.js"></script>
+    <script src="script/httpService.js"></script>
+    <script src="script/script.js"></script>
 </body>
 </html>

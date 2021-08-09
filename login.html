@@ -13,8 +13,7 @@
 </head>
 <body>
     <div class="container">
-        <p class="row mx-2 mt-4 mb-2 border border-success rounded p-1 justify-content-md-center text-secondary">
-        Welcome! This is the message bar...
+        <p class="row mx-2 mt-4 mb-2 border border-secondary rounded  justify-content-md-center text-secondary" id="messageBarId">
         </p>
         <div class="row mt-1 mx-2 border border-2 border-success rounded">
             <div class="col-12 p-0">
@@ -83,8 +82,8 @@
                             <div class="input-group mb-3 flex-column border border-secondary rounded p-4">
                                 <h5 class="mb-3">Login</h5>
                                 <div class="mb-3">
-                                    <label for="loginId" class="form-label">Email <span class="text-danger">*</span></label>
-                                    <input type="email" class="form-control" id="loginId" required autofocus>
+                                    <label for="emailId" class="form-label">Email <span class="text-danger">*</span></label>
+                                    <input type="email" class="form-control" id="emailId" required autofocus>
                                 </div>
                                 <div class="mb-3">
                                     <label for="passwordId" class="form-label">Password <span class="text-danger">*</span></label>
@@ -93,7 +92,7 @@
                                 <div class="col-12 d-flex flex-sm-row justify-content-between customXs">
                                     <div class="col-6"><span class="link1"><a class="nav-link link-secondary" href="#">Forgot your password?</a></span></div>
                                     <div class="col-6>">
-                                        <button type="button" class="btn btn-outline-success m-auto">Login</button>             
+                                        <button type="button" class="btn btn-outline-success m-auto" onclick="login()">Login</button>             
                                     </div>
                                 </div>
                             </div>
@@ -137,7 +136,13 @@
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
-        crossorigin="anonymous">
-    </script>
+        crossorigin="anonymous"></script>
+    <script src="script/user.js"></script>
+    <script src="script/product.js"></script> 
+    <script src="script/userService.js"></script>   
+    <script src="script/productService.js"></script>
+    <script src="script/commonService.js"></script>
+    <script src="script/httpService.js"></script>
+    <script src="script/script.js"></script>
 </body>
 </html>

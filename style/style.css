@@ -46,10 +46,22 @@
 
 .carousel1 {
     top: 40px;
+    animation-name: carText2;
+    animation-duration: 3s;
+}
+@keyframes carText2 {
+    0% {padding-top: 120px; opacity: 0;};
+    100% {padding-top: 0px; opacity: 1;};
 }
 .carousel2 {
     top:160px;
     font-weight: 700;
+    animation-name: carText;
+    animation-duration: 3s;
+}
+@keyframes carText {
+    0% {padding-top: 120px; opacity: 0;};
+    100% {padding-top: 0px; opacity: 1;};
 }
 .carImg {
     opacity: 0.8;
@@ -151,6 +163,12 @@
     .borderCs {
         border: none;
     }
+}
+.checked {
+    color: orange;
+}
+.yellow-color {
+    color: orange;
 }
 
 
