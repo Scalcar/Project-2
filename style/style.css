@@ -1,0 +1,157 @@
+#forBg {
+    background-image: url('../assets/backgroundImg2.jpg');
+    background-position: 70% 56%;
+}
+.icon {
+        font-size: 25px;
+}
+.icon2 {
+    font-size: 22px;
+}
+.customLg {
+    display: none;
+}
+.customSm {
+    display: none;
+}
+
+@media only screen and (min-width: 992px) {
+    .customLg {
+        display: inline-block;
+    }
+    #forBg {
+        background-image: url('../assets/backgroundImg2.jpg');
+        background-position: 98% 67%;
+    }
+}
+
+@media only screen and (max-width: 991px) {
+    .customSm {
+        display: inline-block;
+    } 
+}
+
+@media only screen and (min-width: 768px) and (max-width: 992px) {
+    .carousel2 {
+        top: 102px;
+    }
+}
+
+@media only screen and (max-width: 374px) {
+    .customXs {
+        flex-direction: column;
+        align-items: center;
+    }
+}
+
+.carousel1 {
+    top: 40px;
+}
+.carousel2 {
+    top:160px;
+    font-weight: 700;
+}
+.carImg {
+    opacity: 0.8;
+}
+.row>* {
+    padding-left: 0px;
+    padding-right: 0px;
+}
+/* .carousel-control-next-icon, .carousel-control-prev-icon {
+    filter: invert(60%) sepia(68%) saturate(1421%) hue-rotate(
+    95deg) brightness(112%) contrast(120%);
+} */
+.badgeCs {
+    top: unset !important;
+    bottom: 16px !important;
+    right: 10px;
+}
+.badgeCs2 {
+    top:unset !important;
+    bottom: 14px !important;
+    right: 8px;
+}
+
+.footerList a {
+    border: 1px solid #6c757d;
+    border-radius: 5px;
+    line-height: 27px;
+    margin-left: 8px;
+    transition: all .4s ease-in-out;
+}
+.footerList a:hover {
+    background-color: #54cd38;
+}
+@media only screen and (max-width: 450px) {
+    .footerList {
+        display: contents;
+    }
+}
+.breadcrumb-item a:hover {
+    color: #54cd38;
+}
+.link1 {
+    font-size: 13px;
+}
+.link1 a:hover {
+    color: #54cd38;
+}
+.list1 {
+    text-decoration: none;
+}
+.bg1 {
+    background: #f6f6f6;
+}
+.display1 {
+    display: contents;
+}
+.display2 {
+    display: none;
+}
+.btn-outline-primary {
+    border-color: #97b9eb;
+}
+#panel {
+    left: 61%;
+    display: none;
+}
+#panel2 {
+    left:74%;
+    display: none;
+}
+#panel3 {
+    display: none;
+}
+@media only screen and (min-width: 1200px) {
+    #panel {
+        left: 68%;
+        display: none;
+    }
+    #panel2 {
+        left:79%;
+        display: none;
+    }
+}
+.bt1 {
+    /* width: 60%; */
+    min-width: 44px;
+    max-width: 55px;
+}
+.link2 {
+    cursor: pointer;
+}
+.link2 span:hover {
+    color: #54cd38;
+}
+.borderCs {
+    border: 1px solid #6c757d;
+}
+@media only screen and (max-width: 420px) {
+    .borderCs {
+        border: none;
+    }
+}
+
+
+
