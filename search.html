@@ -13,8 +13,7 @@
 </head>
 <body>
     <div class="container">
-        <p class="row mx-2 mt-4 mb-2 border border-success rounded p-1 justify-content-md-center text-secondary">
-        Welcome! This is the message bar...
+        <p class="row mx-2 mt-4 mb-2 border border-success rounded justify-content-md-center text-secondary text-capitalize fs-5" id="messageBarId">
         </p>
         <div class="row mt-1 mx-2 border border-2 border-success rounded">
             <div class="col-12 p-0">
@@ -83,67 +82,22 @@
                     <h4 class="mb-3 text-center text-secondary p-2">Search for products on our site</h4>
                     <div class="col-12 d-flex justify-content-center flex-column align-items-center flex-lg-row">
                         <div class="input-group mb-2 mt-1 p-3 w-100">
-                            <input type="text" class="form-control" placeholder="Search our store by name" aria-label="Search our store by name" aria-describedby="button-addon2">
-                            <button class="btn btn-outline-primary" type="button" id="button-addon2">Search</button>
+                            <input type="text" class="form-control" placeholder="Search our store by name" aria-label="Search our store by name" aria-describedby="button-addon2" id="searchId">
+                            <button class="btn btn-outline-primary" type="button" id="button-addon2"  onclick="searchForProducts()">Search</button>
                         </div>
                         <div class="input-group mb-2 mt-1 p-2 w-75 ms-2">
-                            <input type="text" class="form-control" placeholder="Min price" aria-label="Search our store" aria-describedby="button-addon2">
-                            <input type="text" class="form-control" placeholder="Max price" aria-label="Search our store" aria-describedby="button-addon2">
-                            <button class="btn btn-outline-primary" type="button" id="button-addon2">Search</button>
+                            <input type="text" class="form-control" placeholder="Min price" aria-label="Search our store" aria-describedby="button-addon2" id="searchId2">
+                            <input type="text" class="form-control" placeholder="Max price" aria-label="Search our store" aria-describedby="button-addon2" id="searchId3">
+                            <button class="btn btn-outline-primary" type="button" id="button-addon2" onclick="searchForProductsPrice()">Search</button>
                         </div> 
                     </div>                                       
                 </div>
             </div>
 
-            <div class="row my-2 mx-md-2 justify-content-center p-3 mb-5">
-                <div class="card m-3 text-center" style="width: 15rem;">
-                    <img src="assets/carousel3.jpg" class="card-img-top" alt="...">
-                    <div class="card-body">
-                      <h5 class="card-title">Name of product</h5>
-                      <p class="card-text">XXXXX</p>
-                      <p class="card-text">200 ron</p>
-                    </div>
-                </div>
-                <div class="card m-3 text-center" style="width: 15rem;">
-                    <img src="assets/carousel3.jpg" class="card-img-top" alt="...">
-                    <div class="card-body">
-                      <h5 class="card-title">Name of product</h5>
-                      <p class="card-text">XXXXX</p>
-                      <p class="card-text">200 ron</p>
-                    </div>
-                </div>
-                <div class="card m-3 text-center" style="width: 15rem;">
-                    <img src="assets/carousel3.jpg" class="card-img-top" alt="...">
-                    <div class="card-body">
-                      <h5 class="card-title">Name of product</h5>
-                      <p class="card-text">XXXXX</p>
-                      <p class="card-text">200 ron</p>
-                    </div>
-                </div>
-                <div class="card m-3 text-center" style="width: 15rem;">
-                    <img src="assets/carousel3.jpg" class="card-img-top" alt="...">
-                    <div class="card-body">
-                      <h5 class="card-title">Name of product</h5>
-                      <p class="card-text">XXXXX</p>
-                      <p class="card-text">200 ron</p>
-                    </div>
-                </div>
-                <div class="card m-3 text-center" style="width: 15rem;">
-                    <img src="assets/carousel3.jpg" class="card-img-top" alt="...">
-                    <div class="card-body">
-                      <h5 class="card-title">Name of product</h5>
-                      <p class="card-text">XXXXX</p>
-                      <p class="card-text">200 ron</p>
-                    </div>
-                </div>
-                <div class="card m-3 text-center" style="width: 15rem;">
-                    <img src="assets/carousel3.jpg" class="card-img-top" alt="...">
-                    <div class="card-body">
-                      <h5 class="card-title">Name of product</h5>
-                      <p class="card-text">XXXXX</p>
-                      <p class="card-text">200 ron</p>
-                    </div>
-                </div>                 
+            <div class="row my-2 mx-md-2 justify-content-center p-3 mb-2"><p class="text-center" id="textModificat"></p></div>
+
+            <div class="row my-2 mx-md-2 justify-content-center p-3 mb-5" id="productsListId">               
+                               
             </div>
               
                 
@@ -172,5 +126,12 @@
         integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
         crossorigin="anonymous">
     </script>
+    <script src="script/user.js"></script>
+    <script src="script/product.js"></script> 
+    <script src="script/userService.js"></script>   
+    <script src="script/productService.js"></script>
+    <script src="script/commonService.js"></script>
+    <script src="script/httpService.js"></script>
+    <script src="script/script.js"></script>
 </body>
 </html>

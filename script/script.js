@@ -65,17 +65,6 @@ function showProfile(){
    });
 }
 
-// function showProfile() {  -- fixed de mine pe 06.08.2021
-//    let userName = window.localStorage.getItem('connected');
-//    let response = userService.getFormatedProfileDetail(userName);
-//    if (response.message) {
-//       //daca avem mesaj de eroare ca nu exista utilizatorul
-//       commonService.showInfoMessage(response.message);
-//    } else {
-//       document.getElementById('persons').innerHTML = response;
-//    }
-// }
-
 function removeProduct(id){
    httpService.deleteProductById(id);
 
@@ -98,6 +87,22 @@ function showProduct() {
          .then(product => {
             let formatedProduct = productService.getFormatedProduct(product);
             document.getElementById('productDetailId').innerHTML = formatedProduct;
+         })
+         .catch(error => {
+            commonService.showInfoMessage(error);
+      });
+   }
+}
+
+function showReview() {
+   let productId = commonService.getFromStorage('productId');
+   if(productId){
+   let promise = httpService.getProductbyId(productId);
+      promise
+         .then(product => {
+            let formatedReview = productService.getReviews(product);
+            document.getElementById('reviewId').innerHTML = formatedReview;
+            document.getElementById('reviewCountId').innerHTML = product.reviews.length;
          })
          .catch(error => {
             commonService.showInfoMessage(error);
@@ -151,6 +156,7 @@ function updateProduct() {
    let product = {"id": Number(productId), "name": name, "description": description, "price": price, "discountPrice": discountPrice, "productUrl": productUrl};
 
    httpService.updateProduct(product);
+   showUpdateDetailProduct();
 }
 
 function addToFavorites(id) {
@@ -159,7 +165,8 @@ function addToFavorites(id) {
       .then(product => {
          let response = productService.addProductToFavorites(product, id);
          commonService.showInfoMessage(response);
-         refreshProducts();
+         // refreshProducts();
+         updateProductsCount();
       })
       .catch(error => {
          commonService.showInfoMessage(error);
@@ -175,7 +182,8 @@ function addToCart(id) {
          let response = productService.addProductToCart(test,id);
          commonService.showInfoMessage(response);
          productService.updateCartStorage();
-         refreshProducts();
+         // refreshProducts();
+         updateProductsCount();
       })
       .catch(error => {
          commonService.showInfoMessage(error);
@@ -188,8 +196,8 @@ function addToCart(id) {
 function updateProductsCount() {
    let count = productService.getProductCount();
    // document.getElementById('listCountId').innerHTML = count.productsCount;
-   document.getElementById('counter').innerHTML = count.cartCount;
-   document.getElementById('favCountID').innerHTML = count.favoritesCount;
+   document.getElementById('cartCountId').innerHTML = count.cartCount;
+   document.getElementById('favCountId').innerHTML = count.favoritesCount;
 }
 
 function refreshProducts() {
@@ -252,6 +260,15 @@ function removeFromFavorites2(id) {
 function addRating(id, rating){
    httpService.addRating(id, rating);
    showProduct();
+}
+
+function addReview(){
+   let productId = commonService.getFromStorage('productId');
+
+   let title = $("#titleId").val();
+   let description = $("#descriptionId").val();
+
+   httpService.addReview(title, description, productId);
 }
 
 function addProduct(){

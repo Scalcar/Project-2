@@ -8,6 +8,10 @@
 .icon2 {
     font-size: 22px;
 }
+.icon3 {
+    font-size: 40px;
+    bottom: 122px;
+}
 .customLg {
     display: none;
 }
@@ -121,6 +125,11 @@
 .display2 {
     display: none;
 }
+.display3 {
+    opacity: 0;
+    color: black;
+    font-weight: bolder;
+}
 .btn-outline-primary {
     border-color: #97b9eb;
 }
@@ -170,6 +179,12 @@
 .yellow-color {
     color: orange;
 }
+
+.card1  :hover {
+    opacity: 1;
+}
+
+
 
 
 

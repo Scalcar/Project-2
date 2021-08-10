@@ -11,10 +11,9 @@
     <link rel="stylesheet" type="text/css" href="style/style.css">
     <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
 </head>
-<body>
+<body onload="setProductDetails(), showUpdateDetailProduct()">
     <div class="container">
-        <p class="row mx-2 mt-4 mb-2 border border-success rounded p-1 justify-content-md-center text-secondary">
-        Welcome! This is the message bar...
+        <p class="row mx-2 mt-4 mb-2 border border-success rounded justify-content-md-center text-secondary text-capitalize fs-5" id="messageBarId">
         </p>
         <div class="row mt-1 mx-2 border border-2 border-success rounded">
             <div class="col-12 p-0">
@@ -82,52 +81,27 @@
             <div class="row mb-5 mx-md-5 d-flex justify-content-center">
                 <div class="col-12 col-md-8 col-lg-8 px-3 d-flex align-items-center flex-column">
                     <h4 class="mb-4 text-center ">Update product</h4>
-                    <div class="col-9  border border-2 border-secondary display1">
-                        <table class="table  border-secondary table-striped table-light text-center w-100 mb-5">
-                            <thead>
-                                <tr>
-                                    <th scope="col">Details</th>
-                                    <th scope="col">Product</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <tr>
-                                    <td>Name:</td>
-                                    <td>Samsung S21</td>
-                                </tr>
-                                <tr>
-                                    <td>Description:</td>
-                                    <td>"Ceva frumos care poate fi admirat de toata lumea"</td>
-                                </tr>
-                                <tr>
-                                    <td>Price:</td>
-                                    <td>360</td>
-                                </tr>
-                                <tr>
-                                    <td>Discount price:</td>
-                                    <td>320</td>
-                                </tr>
-                            </tbody>
-                        </table>  
+                    <div class="col-9  border border-2 border-secondary display1" id="itemUpdate">
+                    </div>
+                    
+                    <div class="input-group mb-4">
+                        <input type="text" class="form-control" placeholder="Name" aria-label="nameId" id="nameId">
+                        <span class="input-group-text"><i class="bi bi-bricks"></i></span>
+                        <input type="text" class="form-control" placeholder="Description" aria-label="descriptionId" id="descriptionId">
                     </div>
                     <div class="input-group mb-4">
-                        <input type="text" class="form-control" placeholder="Name" aria-label="Name">
+                        <input type="text" class="form-control" placeholder="Price" aria-label="priceId" id="priceId">
                         <span class="input-group-text"><i class="bi bi-bricks"></i></span>
-                        <input type="text" class="form-control" placeholder="Description" aria-label="Description">
-                    </div>
-                    <div class="input-group mb-4">
-                        <input type="text" class="form-control" placeholder="Price" aria-label="Price">
-                        <span class="input-group-text"><i class="bi bi-bricks"></i></span>
-                        <input type="text" class="form-control" placeholder="Discount price" aria-label="Discount price">
+                        <input type="text" class="form-control" placeholder="Discount price" aria-label="discountPriceId" id="discountPriceId">
                     </div>
 
                     <div class="input-group mb-4">
-                        <input type="url" class="form-control" placeholder="Product Url" aria-label="Product Url">
+                        <input type="url" class="form-control" placeholder="Product Url" aria-label="productUrlId" id="productUrlId">
                     </div>
 
                     <div class="col-12 d-flex justify-content-center mt-4 mb-3">
                         <div class="col-6>">
-                            <button type="button" class="btn btn-outline-primary m-2 ">Update Product</button>              
+                            <button type="button" class="btn btn-outline-primary m-2" onclick="updateProduct()">Update Product</button>              
                         </div>
                     </div>                                                                                  
                 </div>                
@@ -156,5 +130,12 @@
         integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
         crossorigin="anonymous">
     </script>
+    <script src="script/user.js"></script>
+    <script src="script/product.js"></script> 
+    <script src="script/userService.js"></script>   
+    <script src="script/productService.js"></script>
+    <script src="script/commonService.js"></script>
+    <script src="script/httpService.js"></script>
+    <script src="script/script.js"></script>
 </body>
 </html>

@@ -4,39 +4,65 @@ class ProductService { // var productService = new ProductService();
         this.cartList = this.getCartProductsFromStorage();
         this.favoriteList = this.getFavoritesProductsFromStorage();
     }
-
+   
     getFormatedProducts(products){
         var concatenatedProducts = '';
         products.forEach(product => {
             //pentru fiecare produs construieste urmatorul html
             concatenatedProducts += `
-            <div>
-                <p><img src="${product.productUrl}" style="width:100px;height:100px;" onclick="openProduct(${product.id})" /></p>
-                <p>${product.name}</p>
-                <p>${product.description}</p>
-                <p><del>${product.price}</del></p>
-                <p>${product.discountPrice}</p>
-                <button onclick="removeProduct(${product.id})">Remove</button>
-                <button onclick ="openProduct(${product.id})">Show Details</button>
-                <button onclick ="updateProductById(${product.id})">Update</button>
-                <button onclick ="addToCart(${product.id})">Add to Cart</button>
-                <button onclick="addToFavorites(${product.id})">Add to Favorites</button>
+            <div class="card m-3 text-center" style="width: 16rem;" >
+                <div class="position-relative card1">
+                    <img src="${product.productUrl}" class="card-img-top p-3" alt="${product.name}">
+                    <i class="bi bi-eye position-relative icon3 display3" onclick="openProduct(${product.id})"></i>
+                </div>
+                <div class="card-body">
+                    <h5 class="card-title">${product.name}</h5>
+                    <p class="card-text">${this.showNumberOfStars(product)}</p>
+                    <p class="card-text"><del>${product.price}</del> ${product.discountPrice} lei</p>
+                    <div class="p-2 icon meniuTgl">
+                        <i class="bi bi-trash" onclick="removeProduct(${product.id})" title="Remove Product"></i>
+                        <i class="bi bi-gear" onclick ="updateProductById(${product.id})" title="Update Product"></i>
+                        <i class="bi bi-cart4" onclick ="addToCart(${product.id})" title="Add to Cart"></i>
+                        <i class="bi bi-heart" onclick="addToFavorites(${product.id})" title="Add to Wishlist"></i>
+                    </div>
+                        
+                </div>
             </div>`
         });
         return concatenatedProducts;
     }   
-
+    
     getFormatedProduct(product){
         if (product) {
             return `
-            <div>
-                <h3>Name: ${product.name}</h3>
-                <p>Description: "${product.description}"</p>
-                <p><del>${product.price}</del> lei</p>
-                <p>${product.discountPrice} lei</p>
-                <img src ="${product.productUrl}" style="width:100px; height:100px;" />
-                ${this.getNumberOfStars(product)}
-            </div>`; 
+            <div class="card mb-3" style="border: none;">
+                <div class="row g-0">
+                    <div class="col-md-5">
+                        <img src="${product.productUrl}" class="img-fluid rounded-start h-100" alt="${product.name}">
+                    </div>
+                    <div class="col-md-7">
+                        <div class="card-body">
+                            <h5 class="card-title ms-2">${product.name}</h5>
+                            <p class="card-text ms-2">
+                                ${this.getNumberOfStars(product)}        
+                                <span class="ms-2" id="reviewCountId"></span> <a href="#reviewId" class="list1">reviews</a>                                                                                                                                                       
+                            </p>
+                            <p class="card-text ms-2"><del>${product.price}</del>  ${product.discountPrice}</p>
+                            <p class="card-text ms-2">"${product.description}"</p>
+                            <div class="footerList my-2 ms-2 card-text">
+                                <p>
+                                    <ul class="list-inline my-1">
+                                        Share this: 
+                                        <li class="list-inline-item"><a class="px-1 py-1 mt-1" href="#" title="Facebook"><i class="bi bi-facebook text-secondary"></i></a></li>
+                                        <li class="list-inline-item"><a class="px-1 py-1" href="#" title="Youtube"><i class="bi bi-youtube text-secondary"></i></a></li>
+                                        <li class="list-inline-item"><a class="px-1 py-1" href="#" title="Instagram"><i class="bi bi-instagram text-secondary"></i></a></li>               
+                                    </ul>
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>`;
         }
     }
 
@@ -44,13 +70,16 @@ class ProductService { // var productService = new ProductService();
         let reviews = "";
         product.reviews.forEach(review => {
             reviews += `
-                <h4>${review.title}</h4>
-                <p>${review.description}</p>
+                <div class="border rounded mb-2">
+                    <p class="fw-bold p-2 mb-0 ms-3">${review.title}</p>
+                    <p class="p-2 mb-1 ms-2">${review.description}</p>
+                </div>
             `;
         })
         return reviews;
     }
-      
+
+       
     getNumberOfStars(product) {
         let starList = "";
         let rating = product.rating.avgRating;
@@ -62,49 +91,79 @@ class ProductService { // var productService = new ProductService();
                     starList += ` <span class="fa fa-star checked" onclick="addRating(${product.id}, ${index})"></span>`
                 }else if(index == fullStar+1 && halfStar == true) {
                     starList += ` <span class="fa fa-star-half-o yellow-color" onclick="addRating(${product.id}, ${index})"></span>`
-                    // <i class="fad fa-star-half"></i>
                 } else {
-                    starList += ` <span class="fa fa-star" onclick="addRating(${product.id}, ${index})"></span>`
+                    starList += ` <span class="fa fa-star text-primary" onclick="addRating(${product.id}, ${index})"></span>`
                 }
             }
             return starList;
         } else {
             return `
-            <span class="fa fa-star" onclick="addRating(${product.id}, 1)"></span>
-            <span class="fa fa-star" onclick="addRating(${product.id}, 2)"></span>
-            <span class="fa fa-star" onclick="addRating(${product.id}, 3)"></span>
-            <span class="fa fa-star" onclick="addRating(${product.id}, 4)"></span>
-            <span class="fa fa-star" onclick="addRating(${product.id}, 5)"></span> `;
+            <span class="fa fa-star text-primary" onclick="addRating(${product.id}, 1)"></span>
+            <span class="fa fa-star text-primary" onclick="addRating(${product.id}, 2)"></span>
+            <span class="fa fa-star text-primary" onclick="addRating(${product.id}, 3)"></span>
+            <span class="fa fa-star text-primary" onclick="addRating(${product.id}, 4)"></span>
+            <span class="fa fa-star text-primary" onclick="addRating(${product.id}, 5)"></span> `;
+        }
+    }
+
+    showNumberOfStars(product) {
+        let starList = "";
+        let rating = product.rating.avgRating;
+        let fullStar = Math.floor(rating);
+        let halfStar = (fullStar < rating);
+        if (rating) {
+            for (let index = 1; index <= 5; index++) {
+                if (index <= fullStar) {
+                    starList += ` <span class="fa fa-star checked"></span>`
+                }else if(index == fullStar+1 && halfStar == true) {
+                    starList += ` <span class="fa fa-star-half-o yellow-color"></span>`
+                } else {
+                    starList += ` <span class="fa fa-star text-primary"></span>`
+                }
+            }
+            return starList;
+        } else {
+            return `
+            <span class="fa fa-star text-primary"></span>
+            <span class="fa fa-star text-primary"></span>
+            <span class="fa fa-star text-primary"></span>
+            <span class="fa fa-star text-primary"></span>
+            <span class="fa fa-star text-primary"></span> `;
         }
     }
 
     getFormatedUpdateProduct(product) { //rezolvat
         if (product) {
             return `
-            <tr>
-                <td>Name:</td>
-                <td>${product.name}</td>
-            </tr>
-            <tr>
-                <td>Description:</td>
-                <td>${product.description}</td>
-            </tr>
-            <tr>
-                <td>Price:</td>
-                <td><del>${product.price}</del></td>
-            </tr>
-            <tr>
-                <td>Discount Price:</td>
-                <td>${product.discountPrice}</td>
-            </tr>`;
+            <table class="table  border-secondary table-striped table-light text-center w-100 mb-5">
+                <thead>
+                    <tr>
+                        <th scope="col">Details</th>
+                        <th scope="col">Product</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Name:</td>
+                        <td>${product.name}</td>
+                    </tr>
+                    <tr>
+                        <td>Description:</td>
+                        <td>"${product.description}"</td>
+                    </tr>
+                    <tr>
+                        <td>Price:</td>
+                        <td>${product.price}</td>
+                    </tr>
+                    <tr>
+                        <td>Discount price:</td>
+                        <td>${product.discountPrice}</td>
+                    </tr>
+                </tbody>
+            </table>`;  
         }
     }
-
-    // <tr>
-    //     <td>Image Link</td>
-    //     <td><a href = ${product.imgUrl} alt="${product.name}">Click here</a></td>
-    // </tr>   
-
+        
     getFormatedCart() {
         let list = '';
         list = `
@@ -179,18 +238,25 @@ class ProductService { // var productService = new ProductService();
         }
         let filteredProducts = products.filter(item => item.name.toLowerCase().includes(query.toLowerCase()));
         response.count = filteredProducts.length;
-        filteredProducts.forEach(item => {
+        filteredProducts.forEach(product => {
             response.list += `
-                <div>
-                    <p>${item.name}</p>
-                    <p>${item.description}</p>
-                    <p>${item.price}</p>
-                    <button onclick="removeProduct(${item.id})">Remove</button>
-                    <button onclick ="openProduct(${item.id})">Show Details</button>
-                    <button onclick ="updateProductById(${item.id})">Update</button>
-                    <button onclick ="addToCart(${item.id})">Add to Cart</button>
-                    <button onclick="addToFavorites(${item.id})">Add to Favorites</button>
-                </div>`
+            <div class="card m-3 text-center" style="width: 15rem;" >
+                <div class="position-relative card1">
+                    <img src="${product.productUrl}" class="card-img-top p-3" alt="${product.name}">
+                    <i class="bi bi-eye position-relative icon3 display3" onclick="openProduct(${product.id})"></i>
+                </div>
+                <div class="card-body">
+                    <h5 class="card-title">${product.name}</h5>
+                    <p class="card-text">${this.showNumberOfStars(product)}</p>
+                    <p class="card-text"><del>${product.price}</del> ${product.discountPrice} lei</p>
+                    <div class="p-2 icon meniuTgl">
+                        <i class="bi bi-trash" onclick="removeProduct(${product.id})" title="Remove Product"></i>
+                        <i class="bi bi-gear" onclick ="updateProductById(${product.id})" title="Update Product"></i>
+                        <i class="bi bi-cart4" onclick ="addToCart(${product.id})" title="Add to Cart"></i>
+                        <i class="bi bi-heart" onclick="addToFavorites(${product.id})" title="Add to Wishlist"></i>
+                    </div>                       
+                </div>
+            </div>`
         });
         return response;
     }

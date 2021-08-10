@@ -11,7 +11,7 @@ class HttpService {
             commonService.showInfoMessage("You are registered");
             window.setTimeout( function() {
                 window.location.href = 'login.html'
-            }, 1500);
+            }, 2500);
         })
         .catch(error => {
             commonService.showInfoMessage(error);
@@ -41,7 +41,7 @@ class HttpService {
                 commonService.showInfoMessage("You are logged in"); 
                 window.setTimeout( function() {
                     window.location.href = 'products.html'
-                }, 1500);
+                }, 2500);
             }
         })
         .catch(error => {
@@ -59,7 +59,7 @@ class HttpService {
             commonService.showInfoMessage(result);
             window.setTimeout( function() {
                 window.location.href = 'products.html'
-            }, 1500);
+            }, 3500);
         })
         .catch(error => {
             commonService.showInfoMessage(error);
@@ -83,7 +83,7 @@ class HttpService {
             commonService.showInfoMessage(result);
             window.setTimeout( function() {
                 window.location.href = 'products.html'
-            }, 1500);
+            }, 4000);
         })
         .catch(error => {
             commonService.showInfoMessage(error);
@@ -151,7 +151,9 @@ class HttpService {
         .then(response => response.text())
         .then(result => {
             commonService.showInfoMessage(result);
-            location.reload();
+            window.setTimeout( function() {
+                location.reload();
+            }, 3000);            
         })
         .catch(error => {
             commonService.showInfoMessage(error);

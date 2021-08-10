@@ -13,8 +13,7 @@
 </head>
 <body>
     <div class="container">
-        <p class="row mx-2 mt-4 mb-2 border border-success rounded p-1 justify-content-md-center text-secondary">
-        Welcome! This is the message bar...
+        <p class="row mx-2 mt-4 mb-2 border border-secondary rounded justify-content-md-center text-secondary text-capitalize fs-5" id="messageBarId">
         </p>
         <div class="row mt-1 mx-2 border border-2 border-success rounded">
             <div class="col-12 p-0">
@@ -99,8 +98,8 @@
                             <input type="text" class="form-control" id="priceId" required>
                         </div>
                         <div class="mb-3">
-                            <label for="discountPriceId" class="form-label">Discount Price <span class="text-danger">*</span></label>
-                            <input type="text" class="form-control" id="discountPriceId" required autofocus>
+                            <label for="discountedPriceId" class="form-label">Discount Price <span class="text-danger">*</span></label>
+                            <input type="text" class="form-control" id="discountedPriceId" required autofocus>
                         </div>
                         <div class="mb-4">
                             <label for="productUrlId" class="form-label">Product Url <span class="text-danger">*</span></label>
@@ -108,7 +107,7 @@
                         </div>
                         <div class="col-12 d-flex justify-content-center mt-3 mb-3">
                             <div class="col-6>">
-                                <button type="button" class="btn btn-outline-primary ms-2 ">Add Product</button>              
+                                <button type="button" class="btn btn-outline-primary ms-2 " onclick="addProduct()">Add Product</button>              
                             </div>
                         </div>                       
                     </div>
@@ -138,5 +137,12 @@
         integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
         crossorigin="anonymous">
     </script>
+    <script src="script/user.js"></script>
+    <script src="script/product.js"></script> 
+    <script src="script/userService.js"></script>   
+    <script src="script/productService.js"></script>
+    <script src="script/commonService.js"></script>
+    <script src="script/httpService.js"></script>
+    <script src="script/script.js"></script>
 </body>
 </html>
