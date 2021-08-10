@@ -231,7 +231,7 @@ function removeFromCart2(id) {
       .then(product => {
          let response = productService.removeProductFromCartAnotherMethod(product,id);
          commonService.showInfoMessage(response);
-         refreshProducts();
+         showCart();
       })
       .catch(error => {
          commonService.showInfoMessage(error);
@@ -297,39 +297,34 @@ function searchForProducts(){
 }
 
 function searchForProductsPrice(){
-   let from = $('#searchId2').val();
-   let to = $('#searchId3').val();
+   let min = $('#searchId2').val();
+   let max = $('#searchId3').val();
 
    httpService.getProducts()
    .then(products => {
-      let response = productService.showProductsWithPriceRange(from, to, products);
+      let response = productService.showProductsWithPriceRange(products,
+         product =>
+         product.discountPrice >= Number(min ? min : 0) &&
+         product.discountPrice <= Number(max ? max : 9999));
       let text = `You have found ${response.count} products`;
       document.getElementById('productsListId').innerHTML = response.list;
       document.getElementById('textModificat').innerHTML = text;
    })
    .catch(error => {
       commonService.showInfoMessage(error);
-   });
+   });  
 }
 
+function modifyQuantityOfPlus(id) {
+   let count = productService.increasePlus(id);
+   commonService.showInfoMessage(count);
+   showCart();
+}
 
-
-
-
-
-
-
-
-
-
-
-
-function changeUrl(){
-   let id = localStorage.getItem("productUpdateId");
-   let imgUrl = document.getElementById('imgUrl').value;
-   let response = productService.addImageToProduct(id, imgUrl);
-   showUpdateDetailProduct();
-   commonService.showInfoMessage(response);
+function modifyQuantityOfMinus(id) {
+   let count = productService.decreaseMinus(id);
+   commonService.showInfoMessage(count);
+   showCart();
 }
 
 function applyPromoCode(){
@@ -364,22 +359,10 @@ var applyOnce = (function () {
    };
 })();
 
-function modifyQuantityOfPlus(id) {
-   let count = productService.increasePlus(id);
-   commonService.showInfoMessage(count);
-   refreshProducts();
-}
-
-function modifyQuantityOfMinus(id) {
-   let count = productService.decreaseMinus(id);
-   commonService.showInfoMessage(count);
-   refreshProducts();
-}
-
 function resetCart() {
    let basket = productService.removeAllProductsFromCart();
    commonService.showInfoMessage(basket);
-   refreshProducts();
+   showCart();
 }
 
 function resetFavorites() {

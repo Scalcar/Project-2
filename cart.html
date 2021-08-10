@@ -11,10 +11,9 @@
     <link rel="stylesheet" type="text/css" href="style/style.css">
     <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
 </head>
-<body>
+<body onload="authorize(), showCart()">
     <div class="container">
-        <p class="row mx-2 mt-4 mb-2 border border-success rounded p-1 justify-content-md-center text-secondary">
-            Welcome! This is the message bar...
+        <p class="row mx-2 mt-4 mb-2 border border-success rounded justify-content-md-center text-secondary text-capitalize fs-5" id="messageBarId">
         </p>
         <div class="row mt-1 mx-2 border border-2 border-success rounded">
             <div class="col-12 p-0">
@@ -36,10 +35,7 @@
                                 </li>
                                 <li class="nav-item">
                                     <a class="nav-link" href="profile.html">Profile</a>
-                                </li>
-                                <li class="nav-item">
-                                    <a class="nav-link" href="#">Contact</a>
-                                </li>
+                                </li>                               
                                 <li class="nav-item dropdown customSm">
                                     <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                                       My Account
@@ -47,8 +43,7 @@
                                     <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
                                       <li><a class="dropdown-item" href="profile.html">My Account</a></li>
                                       <li><a class="dropdown-item" href="search.html">Search</a></li>
-                                      <li><a class="dropdown-item" href="favorites.html">Wishlist</a></li>
-                                      <li><a class="dropdown-item" href="#">Shopping Cart</a></li>
+                                      <li><a class="dropdown-item" href="favorites.html">Wishlist</a></li>                            
                                     </ul>
                                   </li>
                             </ul>
@@ -60,11 +55,11 @@
                             <button type="button" class="btn btn-primary customLg">
                                 <a href="search.html" class="nav-link text-light font-weight-bold p-0"><i class="bi bi-search icon2"></i></a>
                             </button>
-                            <div id="flip2">
+                            <!-- <div id="flip2">
                                 <button type="button" class="btn btn-primary customLg">
                                     <i class="bi bi-cart4 icon"></i><span class="badge bg-success rounded-circle badgeCs">0</span>
                                 </button>
-                            </div>
+                            </div> -->
                             <button type="button" class="btn btn-primary customLg">
                                 <i class="bi bi-heart icon"></i><span class="badge bg-danger rounded-circle badgeCs2">0</span>
                             </button>
@@ -80,10 +75,9 @@
                     $("#panel").slideToggle("slow");
                    
                 })
-                $("#flip2").click(function(){
-                    $("#panel2").slideToggle("slow");
-                   
-                })
+                // $("#flip2").click(function(){
+                //     $("#panel2").slideToggle("slow"); 
+                // })
             });
         </script>
         <div class="position-relative">
@@ -95,7 +89,7 @@
                   </ul>
             </div>
         </div>
-        <div class="position-relative">
+        <!-- <div class="position-relative">
             <div class="position-absolute border border-2 m-1 border-success" id="panel2">
                 <ul class="list-group">
                     <li class="list-group-item list-group-item-light"><a href="profile.html" class="list1 text-secondary">My Account</a></li>
@@ -103,7 +97,7 @@
                     <li class="list-group-item list-group-item-light">Shopping Cart</li>
                   </ul>
             </div>
-        </div>
+        </div> -->
 
         <div class=" mt-1 mx-2 border border-2 border-success rounded">
             <div class="row mb-3 mx-1 bg1">
@@ -124,74 +118,8 @@
 
             <div class="row my-2 mx-md-2 justify-content-center p-3 mb-5">
                 <div class="table-responsive">
-                    <table class="table  border-secondary table-striped table-light text-center w-100 mb-5 align-middle">
-                        <thead>
-                            <tr>
-                                <!-- <th scope="col">Nr</th> -->
-                                <th scope="col">Image</th>
-                                <th scope="col">Product</th>
-                                <th scope="col">Price</th>
-                                <th scope="col">Quantity</th>
-                                <th scope="col">Remove</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr>                                
-                                <td><img src="https://lcdn.mediagalaxy.ro/resize/media/catalog/product/S/A/2bd48d28d1c32adea0e55139a4e6434a/SAMSUNG-Galaxy-S20-Fan-Edition-5G-Cloud-Lavender_2.jpg" alt="phone S21" class="w-25"></td>
-                                <td style="width: 180px;">Samsung S21</td>
-                                <td>3000 lei</td>
-                                <td><div class="btn-toolbar mb-3 ps-2" role="toolbar" aria-label="Toolbar with button groups">
-                                    <div class="btn-group ms-3" role="group" aria-label="First group">
-                                        <button type="button" class="btn btn-outline-danger">-</button>
-                                        <div class="bt1">
-                                            <input type="text" class="form-control" value="1" aria-label="Toolbar with button groups" aria-describedby="btnGroupAddon">
-                                        </div>
-                                      <button type="button" class="btn btn-outline-primary">+</button>
-                                    </div>
-                                </div></td>
-                                <td style="width:0px";><i class="bi bi-trash"></i></td>
-                            </tr>
-                            <tr>
-                                <td style="width: 30%;"><img src="https://lcdn.mediagalaxy.ro/resize/media/catalog/product/S/A/2bd48d28d1c32adea0e55139a4e6434a/SAMSUNG-Galaxy-S20-Fan-Edition-5G-Cloud-Lavender_2.jpg" alt="phone S21" class="w-25"></td>
-                                <td style="width: 21%;">Samsung S21</td>
-                                <td>3000 lei</td>
-                                <td><div class="btn-toolbar mb-3 ps-2" role="toolbar" aria-label="Toolbar with button groups">
-                                    <div class="btn-group ms-3" role="group" aria-label="First group">
-                                        <button type="button" class="btn btn-outline-danger">-</button>
-                                        <div class="bt1">
-                                            <input type="text" class="form-control" value="1" aria-label="Toolbar with button groups" aria-describedby="btnGroupAddon">
-                                        </div>
-                                        <button type="button" class="btn btn-outline-primary">+</button>
-                                    </div>
-                                </div></td>
-                                <td><i class="bi bi-trash"></i></td>
-                            </tr>
-                            <tr>
-                                <!-- <th scope="row">1</td> -->
-                                <td><img src="https://lcdn.mediagalaxy.ro/resize/media/catalog/product/S/A/2bd48d28d1c32adea0e55139a4e6434a/SAMSUNG-Galaxy-S20-Fan-Edition-5G-Cloud-Lavender_2.jpg" alt="phone S21" class="w-25"></td>
-                                <td style="width: 180px;">Samsung S21</td>
-                                <td>3000 lei</td>
-                                <td><div class="btn-toolbar mb-3 ps-2" role="toolbar" aria-label="Toolbar with button groups">
-                                    <div class="btn-group ms-3" role="group" aria-label="First group">
-                                        <button type="button" class="btn btn-outline-danger">-</button>
-                                        <div class="bt1">
-                                            <input type="text" class="form-control" value="1" aria-label="Toolbar with button groups" aria-describedby="btnGroupAddon">
-                                        </div>
-                                        <button type="button" class="btn btn-outline-primary">+</button>
-                                    </div>
-                                </div></td>
-                                <td><i class="bi bi-trash"></i></td>
-                            </tr>
-                        </tbody>
-                        <tfoot>
-                            <tr>
-                                <td></td>
-                                <td></td>
-                                <td>Total:</td>
-                                <td>9000</td>
-                                <td></td>
-                            </tr>
-                        </tfoot>
+                    <table class="table  border-secondary  table-light text-center w-100 mb-5 align-middle" id="cartTable">
+                                      
                     </table>
                 </div>
 
@@ -206,8 +134,8 @@
                         <div class="accordion-body">
                             <p>Enter your coupon here</p>
                             <div class="input-group mb-3">
-                                <input type="text" class="form-control" placeholder="Enter your coupon here" aria-label="Enter your coupon here" aria-describedby="button-addon2">
-                                <button class="btn btn-outline-primary" type="button" id="button-addon2">Apply Coupon</button>
+                                <input type="text" class="form-control" placeholder="Enter your coupon here" aria-label="Enter your coupon here" aria-describedby="button-addon2" id="promoCode">
+                                <button class="btn btn-outline-primary" type="button" id="button-addon2" onclick="applyPromoCode()">Apply Coupon</button>
                               </div>
                         </div>
                       </div>
@@ -217,7 +145,7 @@
                 <div class="d-flex flex-column justify-content-between flex-md-row">
                     <div class="col-12 d-flex flex-sm-row justify-content-evenly customXs mt-3">
                         <div class="col-3 mx-3">
-                            <button type="button" class="btn btn-outline-primary m-auto">Reset Cart</button>
+                            <button type="button" class="btn btn-outline-primary m-auto" onclick="resetCart()">Reset Cart</button>
                         </div>
                         <div class="col-3 mx-3">
                             <button type="button" class="btn btn-primary m-auto">
@@ -256,5 +184,12 @@
         integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
         crossorigin="anonymous">
     </script>
+    <script src="script/user.js"></script>
+    <script src="script/product.js"></script> 
+    <script src="script/userService.js"></script>   
+    <script src="script/productService.js"></script>
+    <script src="script/commonService.js"></script>
+    <script src="script/httpService.js"></script>
+    <script src="script/script.js"></script>
 </body>
 </html>

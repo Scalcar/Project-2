@@ -36,10 +36,7 @@
                                 </li>
                                 <li class="nav-item">
                                     <a class="nav-link" href="profile.html">Profile</a>
-                                </li>
-                                <li class="nav-item">
-                                    <a class="nav-link" href="#">Contact</a>
-                                </li>
+                                </li>                                
                                 <li class="nav-item dropdown customSm">
                                     <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                                       My Account
@@ -48,7 +45,7 @@
                                       <li><a class="dropdown-item" href="profile.html">My Account</a></li>
                                       <li><a class="dropdown-item" href="search.html">Search</a></li>
                                       <li><a class="dropdown-item" href="#">Wishlist</a></li>
-                                      <li><a class="dropdown-item" href="#">Shopping Cart</a></li>
+                                      <li><a class="dropdown-item" href="cart.html">Shopping Cart</a></li>
                                     </ul>
                                   </li>
                             </ul>
@@ -62,7 +59,7 @@
                             </button>
                             <div id="flip2">
                                 <button type="button" class="btn btn-primary customLg">
-                                    <i class="bi bi-cart4 icon"></i><span class="badge bg-success rounded-circle badgeCs" id="cartCountId"></span>
+                                    <a href="cart.html" class="nav-link text-light font-weight-bold p-0"><i class="bi bi-cart4 icon"></i><span class="badge bg-success rounded-circle badgeCs" id="cartCountId"></span></a>
                                 </button>
                             </div>
                             <button type="button" class="btn btn-primary customLg">
@@ -80,10 +77,10 @@
                     $("#panel").slideToggle("slow");
                    
                 })
-                $("#flip2").click(function(){
-                    $("#panel2").slideToggle("slow");
+                // $("#flip2").click(function(){
+                //     $("#panel2").slideToggle("slow");
                    
-                })
+                // })
                 $(".meniu1").click(function(){
                     $(".meniuTgl").toggle();
                 })
@@ -98,7 +95,7 @@
                   </ul>
             </div>
         </div>
-        <div class="position-relative">
+        <!-- <div class="position-relative">
             <div class="position-absolute border border-2 m-1 border-success" id="panel2">
                 <ul class="list-group">
                     <li class="list-group-item list-group-item-light"><a href="profile.html" class="list1 text-secondary">My Account</a></li>
@@ -106,7 +103,7 @@
                     <li class="list-group-item list-group-item-light">Shopping Cart</li>
                   </ul>
             </div>
-        </div>
+        </div> -->
 
 
         <div class=" mt-1 mx-2 border border-2 border-success rounded">
@@ -134,8 +131,8 @@
                 });
             </script> -->
 
-            <div class="d-flex justify-content-end">
-                <i class="bi bi-x-circle meniu1 icon me-5 text-success"></i>
+            <div class="d-flex justify-content-start">
+                <span class="icon border ms-5 p-3 rounded">Menu <i class="bi bi-menu-button-wide meniu1 icon text-primary"></i></span>
             </div>
             <div class="row my-2 mx-md-2 justify-content-center p-3 mb-5" id="productsListId">                                                
             </div>

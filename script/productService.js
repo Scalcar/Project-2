@@ -167,37 +167,51 @@ class ProductService { // var productService = new ProductService();
     getFormatedCart() {
         let list = '';
         list = `
-        <tr>
-            <th>Nr</th>
-            <th>Name</th>
-            <th>Price</th>
-            <th>Quantity</th>
-            <th>Remove</th>
-        </tr>`;
-        var j = 1;
+        <thead>
+            <tr>                           
+                <th scope="col">Image</th>
+                <th scope="col">Product</th>
+                <th scope="col">Price</th>
+                <th scope="col">Quantity</th>
+                <th scope="col">Remove</th>
+            </tr>
+        </thead>
+        <tbody>`;
+        // var j = 1;
         this.cartList.forEach(function (product) {
             list += `
-            <tr>
-                <td>${j}</td>
-                <td>${product.name}</td>
-                <td>${product.price}</td>
-                <td><p id="pCart"><span id="addCart" onclick="modifyQuantityOfMinus(${product.id})">-</span><input type='text' value='${product.quantity}'><span id="addCart" onclick ="modifyQuantityOfPlus(${product.id})">+</span></p></td>
-                <td><p  onclick ="removeFromCart2(${product.id})"><span id="remove">x</span></p></td>
+            <tr>                                
+                <td><img src="${product.productUrl}" alt="${product.name}" class="w-25"></td>
+                <td style="width: 180px;">${product.name}</td>
+                <td>${product.discountPrice} lei</td>
+                <td><div class="btn-toolbar mb-3 ps-2" role="toolbar" aria-label="Toolbar with button groups">
+                    <div class="btn-group ms-3" role="group" aria-label="First group">
+                        <button type="button" class="btn btn-outline-danger" onclick="modifyQuantityOfMinus(${product.id})">-</button>
+                    <div class="bt1">
+                        <input type="text" class="form-control" value="${product.quantity}" aria-label="Toolbar with button groups" aria-describedby="btnGroupAddon">
+                    </div>
+                        <button type="button" class="btn btn-outline-primary" onclick ="modifyQuantityOfPlus(${product.id})">+</button>
+                    </div>
+                </div></td>
+                <td style="width:0px";><i class="bi bi-trash" onclick="removeFromCart2(${product.id})"></i></td>
             </tr>`
-            j++;
+            // j++;
         })
         let sumPrice = parseInt(0);
         for (let i = 0, l = this.cartList.length; i < l; i++) {
-            sumPrice += parseInt(this.cartList[i].price) * parseInt(this.cartList[i].quantity);
+            sumPrice += parseInt(this.cartList[i].discountPrice) * parseInt(this.cartList[i].quantity);
         }
         list += `
-        <tr>
-            <td></td>
-            <td></td>
-            <td>Total:</td>
-            <td>${sumPrice}</td>
-            <td></td>
-        </tr>`;
+        </tbody>
+        <tfoot>
+            <tr>
+                <td></td>
+                <td></td>
+                <td>Total:</td>
+                <td>${sumPrice}</td>
+                <td></td>
+            </tr>
+        </tfoot>`;
         return list;
     }   
 
@@ -271,30 +285,32 @@ class ProductService { // var productService = new ProductService();
     //     })
     // }
 
-    showProductsWithPriceRange(from, to, products) { // aici 2)
+    showProductsWithPriceRange(products, filter) { // aici 2)
         let response = {
             list: '',
             count: 0
         }
-        let filteredProducts = products.filter(product => {
-            product.price >= Number(from ? from : 0) && 
-            product.price <= Number(to ? to : 99999)
-        });
+        let filteredProducts = products.filter(filter);
         response.count = filteredProducts.length;
-        filteredProducts.forEach(item => {
+        filteredProducts.forEach(product => {
             response.list += `
-                <div>
-                    <img onclick="openProduct(${product.id})" class="w-100" src="${product.productUrl}"/>
-                    <p>${item.name}</p>
-                    <p>${item.description}</p>
-                    <p><del>${item.price}</del></p>
-                    <p>${item.discountPrice}</p>
-                    <button onclick="removeProduct(${item.id})">Remove</button>
-                    <button onclick ="openProduct(${item.id})">Show Details</button>
-                    <button onclick ="updateProductById(${item.id})">Update</button>
-                    <button onclick ="addToCart(${item.id})">Add to Cart</button>
-                    <button onclick="addToFavorites(${item.id})">Add to Favorites</button>
-                </div>`
+            <div class="card m-3 text-center" style="width: 15rem;" >
+                <div class="position-relative card1">
+                    <img src="${product.productUrl}" class="card-img-top p-3" alt="${product.name}">
+                    <i class="bi bi-eye position-relative icon3 display3" onclick="openProduct(${product.id})"></i>
+                </div>
+                <div class="card-body">
+                    <h5 class="card-title">${product.name}</h5>
+                    <p class="card-text">${this.showNumberOfStars(product)}</p>
+                    <p class="card-text"><del>${product.price}</del> ${product.discountPrice} lei</p>
+                    <div class="p-2 icon meniuTgl">
+                        <i class="bi bi-trash" onclick="removeProduct(${product.id})" title="Remove Product"></i>
+                        <i class="bi bi-gear" onclick ="updateProductById(${product.id})" title="Update Product"></i>
+                        <i class="bi bi-cart4" onclick ="addToCart(${product.id})" title="Add to Cart"></i>
+                        <i class="bi bi-heart" onclick="addToFavorites(${product.id})" title="Add to Wishlist"></i>
+                    </div>                       
+                </div>
+            </div>`
         });
         return response;
         // this.products.filter(product => product.price >= from && product.price <= to);
@@ -313,7 +329,7 @@ class ProductService { // var productService = new ProductService();
     }
     promoCodeDiscount(percent) {
         this.cartList.filter(product => {
-            product.price = product.price * [(100 - percent) / 100];
+            product.discountPrice = product.discountPrice * [(100 - percent) / 100];
             this.updateCartStorage();
         });
         return `Congrats! Now ${percent}% discount for products in the cart`;

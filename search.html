@@ -35,10 +35,7 @@
                                 </li>
                                 <li class="nav-item">
                                     <a class="nav-link" href="profile.html">Profile</a>
-                                </li>
-                                <li class="nav-item">
-                                    <a class="nav-link" href="#">Contact</a>
-                                </li>
+                                </li>                               
                                 <li class="nav-item dropdown customSm">
                                     <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                                       My Account
@@ -46,7 +43,7 @@
                                     <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
                                       <li><a class="dropdown-item" href="profile.html">My Account</a></li>
                                       <li><a class="dropdown-item" href="#">Wishlist</a></li>
-                                      <li><a class="dropdown-item" href="#">Shopping Cart</a></li>
+                                      <li><a class="dropdown-item" href="cart.html">Shopping Cart</a></li>
                                     </ul>
                                   </li>
                             </ul>
@@ -57,7 +54,7 @@
                                 <a href="search.html" class="nav-link text-light font-weight-bold p-0"><i class="bi bi-search icon2"></i></a>
                             </button>
                             <button type="button" class="btn btn-primary customLg">
-                                <i class="bi bi-cart4 icon"></i><span class="badge bg-success rounded-circle badgeCs">0</span>
+                                <a href="cart.html" class="nav-link text-light font-weight-bold p-0"><i class="bi bi-cart4 icon"></i><span class="badge bg-success rounded-circle badgeCs">0</span></a>
                             </button>
                         </div>
                     </div>
@@ -86,8 +83,8 @@
                             <button class="btn btn-outline-primary" type="button" id="button-addon2"  onclick="searchForProducts()">Search</button>
                         </div>
                         <div class="input-group mb-2 mt-1 p-2 w-75 ms-2">
-                            <input type="text" class="form-control" placeholder="Min price" aria-label="Search our store" aria-describedby="button-addon2" id="searchId2">
-                            <input type="text" class="form-control" placeholder="Max price" aria-label="Search our store" aria-describedby="button-addon2" id="searchId3">
+                            <input type="number" class="form-control" placeholder="Min price" aria-label="Search our store" aria-describedby="button-addon2" id="searchId2">
+                            <input type="number" class="form-control" placeholder="Max price" aria-label="Search our store" aria-describedby="button-addon2" id="searchId3">
                             <button class="btn btn-outline-primary" type="button" id="button-addon2" onclick="searchForProductsPrice()">Search</button>
                         </div> 
                     </div>                                       
