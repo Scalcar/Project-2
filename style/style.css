@@ -47,14 +47,18 @@
         align-items: center;
     }
 }
+.animation1 {
+    animation-name: carText2;
+    animation-duration: 5s;
+}
 
 .carousel1 {
     top: 40px;
-    animation-name: carText2;
+    animation-name: carText;
     animation-duration: 3s;
 }
 @keyframes carText2 {
-    0% {padding-top: 120px; opacity: 0;};
+    0% {padding-top: 150px; opacity: 0;};
     100% {padding-top: 0px; opacity: 1;};
 }
 .carousel2 {
@@ -135,26 +139,60 @@
     border-color: #97b9eb;
 }
 #panel {
-    left: 61%;
+    left: 64%;
     display: none;
 }
 #panel2 {
-    left:74%;
+    left:70%;
     display: none;
 }
 #panel3 {
     display: none;
 }
+#panel4 {
+    display: none;
+    left: 70%;
+}
+#panel5 {
+    display: none;
+    left: 69%;
+}
 @media only screen and (min-width: 1200px) {
     #panel {
-        left: 68%;
+        left: 71%;
         display: none;
     }
+    #panel2 {
+        left:75%;
+        display: none;
+    }
+    #panel4 {
+        display: none;
+        left: 74%;
+    }
+    #panel5 {
+        display: none;
+        left: 74%;
+    }
+}
+@media only screen and (min-width: 1400px) {
+    #panel4 {
+        display: none;
+        left: 77%;
+    }
+    #panel {
+        left: 75%;
+        display: none;
+    } 
     #panel2 {
         left:79%;
         display: none;
     }
-}
+    #panel5 {
+        display: none;
+        left: 77%;
+    }   
+}    
 .bt1 {
     /* width: 60%; */
     min-width: 44px;
@@ -184,6 +222,25 @@
 .card1  :hover {
     opacity: 1;
 }
+.navLinkCs :hover {
+    color: #54cd38 !important;
+}
+.meniuTgl {
+    display: none;
+}
+.hOR :hover {
+    font-size: 26px;
+    color: red;
+}
+.hOG :hover {
+    font-size: 26px;
+    color: green;
+}
+.hOB :hover {
+    font-size: 26px;
+    color: blue;
+}
+
 
 
 

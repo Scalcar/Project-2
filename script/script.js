@@ -19,8 +19,20 @@ function authorize() {
    }
 }
 
+function authorize2() {
+   let isAuthenticated = commonService.getFromStorage('token');
+   if(isAuthenticated == "9295f50f-11d1-4076-87d0-7f2324f8093c"){
+      commonService.showInfoMessage("Welcome back master!");
+   }else {
+      commonService.redirect("profile.html");
+      commonService.showInfoMessage("Sorry! That is not for you.");
+   }  
+}
+
 function logOut() {
    window.localStorage.removeItem('token');
+   window.localStorage.removeItem('cartProducts');
+   window.localStorage.removeItem('favorites');
    // window.localStorage.removeItem('connected');
    commonService.redirect("login.html");
 }
@@ -200,6 +212,16 @@ function updateProductsCount() {
    document.getElementById('favCountId').innerHTML = count.favoritesCount;
 }
 
+function updateCartCount() {
+   let count = productService.getProductCount();
+   document.getElementById('cartCountId').innerHTML = count.cartCount;
+}
+
+function updateFavoriteCount() {
+   let count = productService.getProductCount();
+   document.getElementById('favCountId').innerHTML = count.favoritesCount;
+}
+
 function refreshProducts() {
    showCart();
    showFavorites();
@@ -232,6 +254,7 @@ function removeFromCart2(id) {
          let response = productService.removeProductFromCartAnotherMethod(product,id);
          commonService.showInfoMessage(response);
          showCart();
+         updateCartCount();
       })
       .catch(error => {
          commonService.showInfoMessage(error);
@@ -319,12 +342,14 @@ function modifyQuantityOfPlus(id) {
    let count = productService.increasePlus(id);
    commonService.showInfoMessage(count);
    showCart();
+   updateCartCount();
 }
 
 function modifyQuantityOfMinus(id) {
    let count = productService.decreaseMinus(id);
    commonService.showInfoMessage(count);
    showCart();
+   updateCartCount();
 }
 
 function applyPromoCode(){
@@ -363,12 +388,13 @@ function resetCart() {
    let basket = productService.removeAllProductsFromCart();
    commonService.showInfoMessage(basket);
    showCart();
+   updateCartCount()
 }
 
 function resetFavorites() {
    let response = productService.removeAllProductsFromFavorites();
    commonService.showInfoMessage(response);
-   refreshProducts();
+   updateFavoriteCount();
 }
 
 function removeUser() { // -- here  ??
@@ -388,14 +414,6 @@ function changePassword() { // -- here
    showProfile();
 }
 
-// function toggle(){
-//    var element = document.getElementById('toggle');
-//    if(element.style.display != 'none'){
-//       element.style.display = 'none';
-//    }else {
-//       element.style.display = 'block';
-//    }
-// }
 
 
 

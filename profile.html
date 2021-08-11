@@ -11,15 +11,15 @@
     <link rel="stylesheet" type="text/css" href="style/style.css">
     <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
 </head>
-<body onload="authorize(), showProfile()">
+<body onload="authorize(), showProfile(), updateProductsCount()">
     <div class="container">
-        <p class="row mx-2 mt-4 mb-2 border border-secondary rounded justify-content-md-center text-secondary" id="messageBarId">
+        <p class="row mx-2 mt-4 mb-2 border border-secondary rounded justify-content-md-center text-secondary text-capitalize fs-5" id="messageBarId">
         </p>
-        <div class="row mt-1 mx-2 border border-2 border-success rounded">
+        <div class="row mt-1 mx-2 border border-2 border-secondary rounded">
             <div class="col-12 p-0">
-                <nav class="navbar navbar-expand-lg navbar-dark bg-primary sticky-top">
+                <nav class="navbar navbar-expand-lg navbar-light bg-light sticky-top">
                     <div class="container-fluid">
-                        <a class="navbar-brand mx-1 text-warning" href="index.html">VasyShop</i></a>
+                        <a class="navbar-brand mx-1 text-success" href="index.html">VasyShop</i></a>
                         <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
                             data-bs-target="#navbarTogglerDemo03" aria-controls="navbarTogglerDemo03"
                             aria-expanded="false" aria-label="Toggle navigation">
@@ -34,31 +34,30 @@
                                     <a class="nav-link" href="products.html">Products</a>
                                 </li>
                                 <li class="nav-item">
-                                    <a class="nav-link active" aria-current="page" href="#">Profile</a>
-                                </li>
-                                <li class="nav-item">
-                                    <a class="nav-link" href="#">Contact</a>
+                                    <a class="nav-link"  href="favorites.html">Wishlist</a>
                                 </li>
                                 <li class="nav-item dropdown customSm">
                                     <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                                       My Account
                                     </a>
                                     <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                                      <li><a class="dropdown-item" href="profile.html">My Account</a></li>
-                                      <li><a class="dropdown-item" href="search.html">Search</a></li>
-                                      <li><a class="dropdown-item" href="#">Wishlist</a></li>
-                                      <li><a class="dropdown-item" href="cart.html">Shopping Cart</a></li>
+                                      <!-- <li><a class="dropdown-item" href="profile.html">My Account</a></li> -->
+                                      <li><a class="dropdown-item text-secondary" href="search.html">Search</a></li>
+                                      <!-- <li><a class="dropdown-item" href="#">Wishlist</a></li> -->
+                                      <li><a class="dropdown-item text-secondary" href="cart.html">Shopping Cart</a></li>
                                     </ul>
                                   </li>
                             </ul>
-                            <button type="button" class="btn btn-primary customLg">
-                                <a href="profile.html" class="nav-link text-light font-weight-bold p-0"><i class="bi bi-person-circle icon"></i></a>
+                            <div id="flip">
+                                <button type="button" class="btn btn-light customLg">
+                                    <a href="#" class="nav-link text-dark font-weight-bold p-0"><i class="bi bi-person-circle icon"></i></a>
+                                </button>
+                            </div>
+                            <button type="button" class="btn btn-light customLg">
+                                <a href="search.html" class="nav-link text-dark font-weight-bold p-0"><i class="bi bi-search icon2"></i></a>
                             </button>
-                            <button type="button" class="btn btn-primary customLg">
-                                <a href="search.html" class="nav-link text-light font-weight-bold p-0"><i class="bi bi-search icon2"></i></a>
-                            </button>
-                            <button type="button" class="btn btn-primary customLg">
-                                <i class="bi bi-cart4 icon"></i><span class="badge bg-success rounded-circle badgeCs">0</span>
+                            <button type="button" class="btn btn-light customLg">
+                                <a href="cart.html" class="nav-link text-dark font-weight-bold p-0"><i class="bi bi-cart4 icon"></i><span class="badge bg-success rounded-circle badgeCs" id="cartCountId"></span></a>
                             </button>
                         </div>
                     </div>
@@ -66,7 +65,25 @@
             </div>
         </div>
 
-        <div class=" mt-1 mx-2 border border-2 border-success rounded">
+        <script>
+            $(document).ready(function(){
+                $("#flip").click(function(){
+                    $("#panel4").slideToggle("slow");                   
+                })                               
+            });
+        </script>
+        <div class="position-relative">
+            <div class="position-absolute border border-2 m-1 border-secondary" id="panel4">
+                <ul class="list-group">
+                    <li class="list-group-item list-group-item-light"><a href="register.html" class="list1 text-secondary">New Account</a></li>
+                    <li class="list-group-item list-group-item-light"><a href="admin.html" class="list1 text-secondary">Admin Panel</a></li>
+                    <li class="list-group-item list-group-item-light"><a href="favorites.html" class="list1 text-secondary">Wishlist</a></li>
+                    <li class="list-group-item list-group-item-light"><a href="cart.html" class="list1 text-secondary">Shopping Cart</a></li>
+                  </ul>
+            </div>
+        </div>
+
+        <div class=" mt-1 mx-2 border border-2 border-secondary rounded">
             <div class="row mb-5 mx-1 bg1">
                 <div class="col-12  my-5 d-flex justify-content-center">
                     <nav style="--bs-breadcrumb-divider: '>';" aria-label="breadcrumb">
@@ -74,18 +91,22 @@
                         <ol class="breadcrumb">
                           <li class="breadcrumb-item"><a class="nav-link link-secondary p-0" href="index.html">Home</a></li>
                           <li class="breadcrumb-item active" aria-current="page">Profile</li>
-                          <li class="breadcrumb-item"><a class="link-secondary p-2 list1" href="admin.html">Admin Panel</a></li>
+                          <!-- <li class="breadcrumb-item"><a class="link-secondary p-2 list1" href="admin.html">Admin Panel</a></li> -->
                         </ol>
                     </nav>
                 </div>
             </div>
-            <div class="row mb-5 mx-md-5 d-flex justify-content-center">
-                <div class="col-12 col-md-8 col-lg-5 px-3 d-flex align-items-center flex-column">
+            <div class="row mb-5 mx-md-4 d-flex justify-content-center">
+                <div class="col-12 col-md-8 col-lg-6 px-3 d-flex align-items-center flex-column">
                     <h4 class="mb-4 text-center">My Profile</h4>
-                    <div class="col-9  border border-2 border-secondary rounded display1">
+                    <div class="col-10  border border-2 border-secondary rounded display1">
                         <div id="myprofileId" class="col-12">
                             
                         </div>
+                        <div class="d-flex mb-5">                          
+                            <p class="card-text ms-2 text-secondary fs-5">Wishlist items: <span id="favCountId"></span> products</p>
+                        </div>
+                    
                         <div class="d-flex col-12 justify-content-around">
                             <!-- <div>
                                 <button type="button" class="btn btn-outline-primary">Change Name</button>
@@ -94,16 +115,16 @@
                                 <button type="button" class="btn btn-outline-primary" onclick="logOut()">Log Out</button>
                             </div>
                         </div>
-                        <div class="form-floating mb-3 mt-4 w-75 display2">
+                        <!-- <div class="form-floating mb-3 mt-4 w-75 display2">
                             <input type="text" class="form-control text-primary" id="changeName" placeholder="New Name">
                             <label for="changeName">New Name</label>
-                        </div>
+                        </div> -->
                     </div>
                 </div>
             </div>
         </div>
 
-        <div class="row mx-2 mt-1 border border-2 border-success rounded p-3 justify-content-center bg-light">
+        <div class="row mx-2 mt-1 border border-2 border-secondary rounded p-3 justify-content-center bg-light">
             <div class="col-md-6">
                 <p class="text-center text-secondary p-3 m-1">COPYRIGHT&copy; VasyShop 2021 | Built with love</p>
             </div>

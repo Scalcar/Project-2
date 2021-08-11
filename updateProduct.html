@@ -11,15 +11,15 @@
     <link rel="stylesheet" type="text/css" href="style/style.css">
     <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
 </head>
-<body onload="setProductDetails(), showUpdateDetailProduct()">
+<body onload="setProductDetails(), showUpdateDetailProduct(), updateCartCount()">
     <div class="container">
-        <p class="row mx-2 mt-4 mb-2 border border-success rounded justify-content-md-center text-secondary text-capitalize fs-5" id="messageBarId">
+        <p class="row mx-2 mt-4 mb-2 border border-secondary rounded justify-content-md-center text-secondary text-capitalize fs-5" id="messageBarId">
         </p>
-        <div class="row mt-1 mx-2 border border-2 border-success rounded">
+        <div class="row mt-1 mx-2 border border-2 border-secondary rounded">
             <div class="col-12 p-0">
-                <nav class="navbar navbar-expand-lg navbar-dark bg-primary sticky-top">
+                <nav class="navbar navbar-expand-lg navbar-light bg-light sticky-top">
                     <div class="container-fluid">
-                        <a class="navbar-brand mx-1 text-warning" href="#">VasyShop</i></a>
+                        <a class="navbar-brand mx-1 text-success" href="index.html">VasyShop</i></a>
                         <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
                             data-bs-target="#navbarTogglerDemo03" aria-controls="navbarTogglerDemo03"
                             aria-expanded="false" aria-label="Toggle navigation">
@@ -35,30 +35,27 @@
                                 </li>
                                 <li class="nav-item">
                                     <a class="nav-link" href="profile.html">Profile</a>
-                                </li>
-                                <li class="nav-item">
-                                    <a class="nav-link" href="#">Contact</a>
-                                </li>
+                                </li>                              
                                 <li class="nav-item dropdown customSm">
                                     <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                                       My Account
                                     </a>
                                     <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                                      <li><a class="dropdown-item" href="profile.html">My Account</a></li>
-                                      <li><a class="dropdown-item" href="search.html">Search</a></li>
-                                      <li><a class="dropdown-item" href="#">Wishlist</a></li>
-                                      <li><a class="dropdown-item" href="#">Shopping Cart</a></li>
+                                      <li><a class="dropdown-item text-secondary" href="profile.html">My Account</a></li>
+                                      <li><a class="dropdown-item text-secondary" href="search.html">Search</a></li>
+                                      <li><a class="dropdown-item text-secondary" href="favorites.html">Wishlist</a></li>
+                                      <li><a class="dropdown-item text-secondary" href="cart.html">Shopping Cart</a></li>
                                     </ul>
                                   </li>
                             </ul>
-                            <button type="button" class="btn btn-primary customLg">
-                                <a href="profile.html" class="nav-link text-light font-weight-bold p-0"><i class="bi bi-person-circle icon"></i></i></a>
+                            <button type="button" class="btn btn-light customLg">
+                                <a href="profile.html" class="nav-link text-dark font-weight-bold p-0"><i class="bi bi-person-circle icon"></i></i></a>
                             </button>
-                            <button type="button" class="btn btn-primary customLg">
-                                <a href="search.html" class="nav-link text-light font-weight-bold p-0"><i class="bi bi-search icon2"></i></a>
+                            <button type="button" class="btn btn-light customLg">
+                                <a href="search.html" class="nav-link text-dark font-weight-bold p-0"><i class="bi bi-search icon2"></i></a>
                             </button>
-                            <button type="button" class="btn btn-primary customLg">
-                                <i class="bi bi-cart4 icon"></i><span class="badge bg-success rounded-circle badgeCs">0</span>
+                            <button type="button" class="btn btn-light customLg">
+                                <a href="cart.html" class="nav-link text-dark font-weight-bold p-0"><i class="bi bi-cart4 icon"></i><span class="badge bg-success rounded-circle badgeCs" id="cartCountId"></span></a>
                             </button>
                         </div>
                     </div>
@@ -66,7 +63,7 @@
             </div>
         </div>
 
-        <div class=" mt-1 mx-2 border border-2 border-success rounded">
+        <div class=" mt-1 mx-2 border border-2 border-secondary rounded">
             <div class="row mb-5 mx-1 bg1">
                 <div class="col-12  my-5 d-flex justify-content-center">
                     <nav style="--bs-breadcrumb-divider: '>';" aria-label="breadcrumb">
@@ -82,6 +79,7 @@
                 <div class="col-12 col-md-8 col-lg-8 px-3 d-flex align-items-center flex-column">
                     <h4 class="mb-4 text-center ">Update product</h4>
                     <div class="col-9  border border-2 border-secondary display1" id="itemUpdate">
+                        <!-- content here injected -->
                     </div>
                     
                     <div class="input-group mb-4">
@@ -108,7 +106,7 @@
             </div>           
         </div>
 
-        <div class="row mx-2 mt-1 border border-2 border-success rounded p-3 justify-content-center bg-light">
+        <div class="row mx-2 mt-1 border border-2 border-secondary rounded p-3 justify-content-center bg-light">
             <div class="col-md-6">
                 <p class="text-center text-secondary p-3 m-1">COPYRIGHT&copy; VasyShop 2021 | Built with love</p>
             </div>

@@ -153,7 +153,7 @@ class HttpService {
             commonService.showInfoMessage(result);
             window.setTimeout( function() {
                 location.reload();
-            }, 3000);            
+            }, 2000);            
         })
         .catch(error => {
             commonService.showInfoMessage(error);

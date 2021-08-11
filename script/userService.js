@@ -41,32 +41,21 @@ class UserService{
         if(profile){
             //returneaza stringul
            return `
-           <table class="table  border-secondary table-striped table-light text-center w-100 mb-5">
-                <thead>
-                    <tr>
-                        <th scope="col"><i class="bi bi-book text-primary"></i></th>
-                        <th scope="col"><i class="bi bi-clipboard-data text-primary"></i></th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <td>Name:</td>
-                        <td>${profile.name}</td>
-                    </tr>
-                    <tr>
-                        <td>Email:</td>
-                        <td>${profile.email}</td>
-                    </tr>
-                    <tr>
-                        <td>Age:</td>
-                        <td>${profile.age}</td>
-                    </tr>
-                    <tr>
-                        <td>Gender:</td>
-                        <td>${profile.gender}</td>
-                    </tr>
-                </tbody>
-            </table>`;
+           <div class="card mb-3 mb-2">
+                <div class="row g-0">
+                    <div class="col-md-5">
+                        <img src="assets/person.png" class="img-fluid rounded-start h-100 p-5 p-sm-3" alt="person picture">
+                    </div>
+                    <div class="col-md-7">
+                        <div class="card-body">
+                            <h5 class="card-title ms-2">Name: ${profile.name}</h5>
+                            <p class="card-text ms-2">Email: ${profile.email}</p>                                                                                                                                                                                                                                                                                      
+                            <p class="card-text ms-2">Age: ${profile.age}</p>
+                            <p class="card-text ms-2">Gender: ${profile.gender}</p>                                                                   
+                        </div>
+                    </div>
+                </div>
+            </div>`;
         }    
     }
 

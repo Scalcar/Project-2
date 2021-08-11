@@ -11,15 +11,15 @@
     <link rel="stylesheet" type="text/css" href="style/style.css">
     <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
 </head>
-<body onload="authorize(), showCart()">
+<body onload="authorize(), showCart(), updateProductsCount()">
     <div class="container">
-        <p class="row mx-2 mt-4 mb-2 border border-success rounded justify-content-md-center text-secondary text-capitalize fs-5" id="messageBarId">
+        <p class="row mx-2 mt-4 mb-2 border border-secondary rounded justify-content-md-center text-secondary text-capitalize fs-5" id="messageBarId">
         </p>
-        <div class="row mt-1 mx-2 border border-2 border-success rounded">
+        <div class="row mt-1 mx-2 border border-2 border-secondary rounded">
             <div class="col-12 p-0">
-                <nav class="navbar navbar-expand-lg navbar-dark bg-primary sticky-top">
+                <nav class="navbar navbar-expand-lg navbar-light bg-light sticky-top">
                     <div class="container-fluid">
-                        <a class="navbar-brand mx-1 text-warning" href="#">VasyShop</i></a>
+                        <a class="navbar-brand mx-1 text-success" href="index.html">VasyShop</a>
                         <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
                             data-bs-target="#navbarTogglerDemo03" aria-controls="navbarTogglerDemo03"
                             aria-expanded="false" aria-label="Toggle navigation">
@@ -41,27 +41,27 @@
                                       My Account
                                     </a>
                                     <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                                      <li><a class="dropdown-item" href="profile.html">My Account</a></li>
-                                      <li><a class="dropdown-item" href="search.html">Search</a></li>
-                                      <li><a class="dropdown-item" href="favorites.html">Wishlist</a></li>                            
+                                      <li><a class="dropdown-item text-secondary" href="profile.html">My Account</a></li>
+                                      <li><a class="dropdown-item text-secondary" href="search.html">Search</a></li>
+                                      <li><a class="dropdown-item text-secondary" href="favorites.html">Wishlist</a></li>                            
                                     </ul>
                                   </li>
                             </ul>
                             <div id="flip">
-                                <button type="button" class="btn btn-primary customLg">
-                                    <a href="#" class="nav-link text-light font-weight-bold p-0"><i class="bi bi-person-circle icon"></i></a>
+                                <button type="button" class="btn btn-light customLg">
+                                    <a href="#" class="nav-link text-dark font-weight-bold p-0"><i class="bi bi-person-circle icon"></i></a>
                                 </button>
                             </div>
-                            <button type="button" class="btn btn-primary customLg">
-                                <a href="search.html" class="nav-link text-light font-weight-bold p-0"><i class="bi bi-search icon2"></i></a>
+                            <button type="button" class="btn btn-light customLg">
+                                <a href="search.html" class="nav-link text-dark font-weight-bold p-0"><i class="bi bi-search icon2"></i></a>
                             </button>
                             <!-- <div id="flip2">
                                 <button type="button" class="btn btn-primary customLg">
                                     <i class="bi bi-cart4 icon"></i><span class="badge bg-success rounded-circle badgeCs">0</span>
                                 </button>
                             </div> -->
-                            <button type="button" class="btn btn-primary customLg">
-                                <i class="bi bi-heart icon"></i><span class="badge bg-danger rounded-circle badgeCs2">0</span>
+                            <button type="button" class="btn btn-light customLg">
+                                <a href="favorites.html" class="nav-link text-dark font-weight-bold p-0"><i class="bi bi-heart icon"></i><span class="badge bg-danger rounded-circle badgeCs2" id="favCountId"></span></a>
                             </button>
                         </div>
                     </div>
@@ -72,7 +72,7 @@
         <script>
             $(document).ready(function(){
                 $("#flip").click(function(){
-                    $("#panel").slideToggle("slow");
+                    $("#panel2").slideToggle("slow");
                    
                 })
                 // $("#flip2").click(function(){
@@ -81,11 +81,11 @@
             });
         </script>
         <div class="position-relative">
-            <div class="position-absolute border border-2 m-1 border-success" id="panel">
+            <div class="position-absolute border border-2 m-1 border-secondary" id="panel2">
                 <ul class="list-group">
                     <li class="list-group-item list-group-item-light"><a href="profile.html" class="list1 text-secondary">My Account</a></li>
                     <li class="list-group-item list-group-item-light"><a href="favorites.html" class="list1 text-secondary">Wishlist</a></li>
-                    <li class="list-group-item list-group-item-light"><a href="cart.html" class="list1 text-secondary">Shopping Cart</a></li>
+                    <li class="list-group-item list-group-item-light"><a href="search.html" class="list1 text-secondary">Search</a></li>
                   </ul>
             </div>
         </div>
@@ -99,7 +99,7 @@
             </div>
         </div> -->
 
-        <div class=" mt-1 mx-2 border border-2 border-success rounded">
+        <div class=" mt-1 mx-2 border border-2 border-secondary rounded">
             <div class="row mb-3 mx-1 bg1">
                 <div class="col-12  ms-2 my-5 d-flex justify-content-center">
                     <nav style="--bs-breadcrumb-divider: '>';" aria-label="breadcrumb">
@@ -112,7 +112,7 @@
             </div>
             <div class="row mb-3 mx-md-5 d-flex justify-content-center">
                 <div class="col-12 col-md-8 col-lg-9 px-2 d-flex align-items-center flex-column">
-                    <h4 class="mb-3 text-center text-secondary p-2">There are <span class="">3</span> products  in  your cart</h4>
+                    <h4 class="mb-3 text-center text-secondary p-2">There are <span id="cartCountId"></span> products  in  your cart</h4>
                 </div>
             </div>
 
@@ -160,7 +160,7 @@
             </div>
         </div>
 
-        <div class="row mx-2 mt-1 border border-2 border-success rounded p-3 justify-content-center bg-light">
+        <div class="row mx-2 mt-1 border border-2 border-secondary rounded p-3 justify-content-center bg-light">
             <div class="col-md-6">
                 <p class="text-center text-secondary p-3 m-1">COPYRIGHT&copy; VasyShop 2021 | Built with love</p>
             </div>

@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Wish List</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css">
+    <link rel="stylesheet" type="text/css" href="style/style.css">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+</head>
+<body onload="authorize(), updateProductsCount()">
+    <div class="container">
+        <p class="row mx-2 mt-4 mb-2 border border-secondary rounded justify-content-md-center text-secondary text-capitalize fs-5" id="messageBarId">
+        </p>
+        <div class="row mt-1 mx-2 border border-2 border-secondary rounded">
+            <div class="col-12 p-0">
+                <nav class="navbar navbar-expand-lg navbar-light bg-light sticky-top">
+                    <div class="container-fluid">
+                        <a class="navbar-brand mx-1 text-success" href="index.html">VasyShop</a>
+                        <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                            data-bs-target="#navbarTogglerDemo03" aria-controls="navbarTogglerDemo03"
+                            aria-expanded="false" aria-label="Toggle navigation">
+                            <span class="navbar-toggler-icon"></span>
+                        </button>
+                        <div class="collapse navbar-collapse" id="navbarTogglerDemo03">
+                            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                                <li class="nav-item">
+                                    <a class="nav-link" href="index.html">Home</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" href="products.html">Products</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" href="profile.html">Profile</a>
+                                </li>                               
+                                <li class="nav-item dropdown customSm">
+                                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                      My Account
+                                    </a>
+                                    <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                                      <li><a class="dropdown-item text-secondary" href="profile.html">My Account</a></li>
+                                      <li><a class="dropdown-item text-secondary" href="search.html">Search</a></li>
+                                      <li><a class="dropdown-item text-secondary" href="favorites.html">Wishlist</a></li>                            
+                                    </ul>
+                                  </li>
+                            </ul>
+                            <div id="flip">
+                                <button type="button" class="btn btn-light customLg">
+                                    <a href="#" class="nav-link text-dark font-weight-bold p-0"><i class="bi bi-person-circle icon"></i></a>
+                                </button>
+                            </div>
+                            <button type="button" class="btn btn-light customLg">
+                                <a href="search.html" class="nav-link text-dark font-weight-bold p-0"><i class="bi bi-search icon2"></i></a>
+                            </button>
+                            <!-- <div id="flip2">
+                                <button type="button" class="btn btn-primary customLg">
+                                    <i class="bi bi-cart4 icon"></i><span class="badge bg-success rounded-circle badgeCs">0</span>
+                                </button>
+                            </div> -->
+                            <button type="button" class="btn btn-light customLg">
+                                <a href="cart.html" class="nav-link text-dark font-weight-bold p-0"><i class="bi bi-cart4 icon"></i><span class="badge bg-success rounded-circle badgeCs" id="cartCountId"></span></a>
+                            </button>
+                        </div>
+                    </div>
+                </nav>
+            </div>
+        </div>
+
+        <script>
+            $(document).ready(function(){
+                $("#flip").click(function(){
+                    $("#panel5").slideToggle("slow");                  
+                })               
+            });
+        </script>
+        <div class="position-relative">
+            <div class="position-absolute border border-2 m-1 border-secondary" id="panel5">
+                <ul class="list-group">
+                    <li class="list-group-item list-group-item-light"><a href="profile.html" class="list1 text-secondary">My Account</a></li>
+                    <li class="list-group-item list-group-item-light"><a href="cart.html" class="list1 text-secondary">Shopping Cart</a></li>
+                    <li class="list-group-item list-group-item-light"><a href="search.html" class="list1 text-secondary">Search</a></li>
+                  </ul>
+            </div>
+        </div>
+
+        <div class=" mt-1 mx-2 border border-2 border-secondary rounded">
+            <div class="row mb-3 mx-1 bg1">
+                <div class="col-12  ms-2 my-5 d-flex justify-content-center">
+                    <nav style="--bs-breadcrumb-divider: '>';" aria-label="breadcrumb">
+                        <h1 class="text-secondary">Your Wish List</h1>
+                        <ol class="breadcrumb">
+                          <li class="breadcrumb-item active" aria-current="page"></li>
+                        </ol>
+                    </nav>
+                </div>
+            </div>
+            <div class="row mb-3 mx-md-5 d-flex justify-content-center">
+                <div class="col-12 col-md-8 col-lg-9 px-2 d-flex align-items-center flex-column">
+                    <h4 class="mb-3 text-center text-secondary p-2">There are <span id="favCountId"></span> products  in  your wishlist</h4>
+                </div>
+            </div>
+
+            <div class="row my-2 mx-md-2 justify-content-center p-3 mb-5">
+                <div class="table-responsive">
+                    <table class="table  border-secondary  table-light text-center w-100 mb-5 align-middle" id="cartTable">
+                             <!--  aici-->         
+                    </table>
+                </div>
+
+                <div class="d-flex flex-column justify-content-between flex-md-row">
+                    <div class="col-12 d-flex flex-sm-row justify-content-evenly customXs mt-3">
+                        <div class="col-3 mx-3">
+                            <button type="button" class="btn btn-outline-primary m-auto" onclick="resetFavorites()">Reset wishlist</button>
+                        </div>
+                        <div class="col-3 mx-3">
+                            <button type="button" class="btn btn-primary m-auto">
+                                <a href="products.html" class="list1 text-light">Continue shopping</a>
+                            </button>             
+                        </div>
+                        <div class="col-3 mx-3">
+                            <button type="button" class="btn btn-outline-primary m-auto">Check Out</button>             
+                        </div>
+                    </div>                    
+                </div>                          
+            </div>
+          
+        </div>
+
+        <div class="row mx-2 mt-1 border border-2 border-secondary rounded p-3 justify-content-center bg-light">
+            <div class="col-md-6">
+                <p class="text-center text-secondary p-3 m-1">COPYRIGHT&copy; VasyShop 2021 | Built with love</p>
+            </div>
+            <div class="col-md-6">
+                <div class="footerList my-3 ms-5">
+                    <ul class="list-inline my-1">
+                        <li class="list-inline-item"><a class="px-3 py-1" href="#" title="Google"><i class="bi bi-google text-secondary"></i></a></li>
+                        <li class="list-inline-item"><a class="px-3 py-1" href="#" title="Youtube"><i class="bi bi-youtube text-secondary"></i></a></li>
+                        <li class="list-inline-item"><a class="px-3 py-1" href="#" title="Instagram"><i class="bi bi-instagram text-secondary"></i></a></li>
+                        <li class="list-inline-item"><a class="px-3 py-1 mt-1" href="#" title="Twitter"><i class="bi bi-twitter text-secondary"></i></a></li>
+                        <li class="list-inline-item"><a class="px-3 py-1" href="#" title="Linkedin"><i class="bi bi-linkedin text-secondary"></i></a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
+        crossorigin="anonymous">
+    </script>
+    <script src="script/user.js"></script>
+    <script src="script/product.js"></script> 
+    <script src="script/userService.js"></script>   
+    <script src="script/productService.js"></script>
+    <script src="script/commonService.js"></script>
+    <script src="script/httpService.js"></script>
+    <script src="script/script.js"></script>
+</body>
+</html>

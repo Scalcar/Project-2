@@ -16,16 +16,25 @@ class ProductService { // var productService = new ProductService();
                     <i class="bi bi-eye position-relative icon3 display3" onclick="openProduct(${product.id})"></i>
                 </div>
                 <div class="card-body">
-                    <h5 class="card-title">${product.name}</h5>
+                    <h5 class="card-title link2 text-secondary" onclick="openProduct(${product.id})">${product.name}</h5>
                     <p class="card-text">${this.showNumberOfStars(product)}</p>
                     <p class="card-text"><del>${product.price}</del> ${product.discountPrice} lei</p>
-                    <div class="p-2 icon meniuTgl">
-                        <i class="bi bi-trash" onclick="removeProduct(${product.id})" title="Remove Product"></i>
-                        <i class="bi bi-gear" onclick ="updateProductById(${product.id})" title="Update Product"></i>
-                        <i class="bi bi-cart4" onclick ="addToCart(${product.id})" title="Add to Cart"></i>
-                        <i class="bi bi-heart" onclick="addToFavorites(${product.id})" title="Add to Wishlist"></i>
-                    </div>
-                        
+                    <div class="p-2 icon meniuTgl mb-2">
+                        <div class="d-flex justify-content-evenly position-relative">
+                            <div class="hOR">
+                                <i class="bi bi-trash" onclick="removeProduct(${product.id})" title="Remove Product"></i>
+                            </div>
+                            <div class="hOG">
+                                <i class="bi bi-gear" onclick ="updateProductById(${product.id})" title="Update Product"></i>
+                            </div>
+                            <div class="hOB">
+                                <i class="bi bi-cart4" onclick ="addToCart(${product.id})" title="Add to Cart"></i>
+                            </div>
+                            <div class="hOR">
+                                <i class="bi bi-heart" onclick="addToFavorites(${product.id})" title="Add to Wishlist"></i>
+                            </div>
+                        </div>
+                    </div>                       
                 </div>
             </div>`
         });
@@ -44,8 +53,8 @@ class ProductService { // var productService = new ProductService();
                         <div class="card-body">
                             <h5 class="card-title ms-2">${product.name}</h5>
                             <p class="card-text ms-2">
-                                ${this.getNumberOfStars(product)}        
-                                <span class="ms-2" id="reviewCountId"></span> <a href="#reviewId" class="list1">reviews</a>                                                                                                                                                       
+                                ${this.getNumberOfStars(product)}       
+                                <a href="#reviewId" class="list1">reviews</a>                                                                                                                                                       
                             </p>
                             <p class="card-text ms-2"><del>${product.price}</del>  ${product.discountPrice}</p>
                             <p class="card-text ms-2">"${product.description}"</p>
@@ -135,7 +144,7 @@ class ProductService { // var productService = new ProductService();
     getFormatedUpdateProduct(product) { //rezolvat
         if (product) {
             return `
-            <table class="table  border-secondary table-striped table-light text-center w-100 mb-5">
+            <table class="table  border-secondary table-striped table-light text-center w-100 mb-5 mt-2">
                 <thead>
                     <tr>
                         <th scope="col">Details</th>
@@ -156,7 +165,7 @@ class ProductService { // var productService = new ProductService();
                         <td>${product.price}</td>
                     </tr>
                     <tr>
-                        <td>Discount price:</td>
+                        <td>New price:</td>
                         <td>${product.discountPrice}</td>
                     </tr>
                 </tbody>
@@ -193,7 +202,7 @@ class ProductService { // var productService = new ProductService();
                         <button type="button" class="btn btn-outline-primary" onclick ="modifyQuantityOfPlus(${product.id})">+</button>
                     </div>
                 </div></td>
-                <td style="width:0px";><i class="bi bi-trash" onclick="removeFromCart2(${product.id})"></i></td>
+                <td style="width:0px"; class="hOR"><i class="bi bi-trash icon2" onclick="removeFromCart2(${product.id})"></i></td>
             </tr>`
             // j++;
         })
@@ -260,15 +269,9 @@ class ProductService { // var productService = new ProductService();
                     <i class="bi bi-eye position-relative icon3 display3" onclick="openProduct(${product.id})"></i>
                 </div>
                 <div class="card-body">
-                    <h5 class="card-title">${product.name}</h5>
+                    <h5 class="card-title text-secondary link2" onclick="openProduct(${product.id})">${product.name}</h5>
                     <p class="card-text">${this.showNumberOfStars(product)}</p>
-                    <p class="card-text"><del>${product.price}</del> ${product.discountPrice} lei</p>
-                    <div class="p-2 icon meniuTgl">
-                        <i class="bi bi-trash" onclick="removeProduct(${product.id})" title="Remove Product"></i>
-                        <i class="bi bi-gear" onclick ="updateProductById(${product.id})" title="Update Product"></i>
-                        <i class="bi bi-cart4" onclick ="addToCart(${product.id})" title="Add to Cart"></i>
-                        <i class="bi bi-heart" onclick="addToFavorites(${product.id})" title="Add to Wishlist"></i>
-                    </div>                       
+                    <p class="card-text"><del>${product.price}</del> ${product.discountPrice} lei</p>                                          
                 </div>
             </div>`
         });
@@ -300,15 +303,9 @@ class ProductService { // var productService = new ProductService();
                     <i class="bi bi-eye position-relative icon3 display3" onclick="openProduct(${product.id})"></i>
                 </div>
                 <div class="card-body">
-                    <h5 class="card-title">${product.name}</h5>
+                    <h5 class="card-title link2 text-secondary" onclick="openProduct(${product.id})">${product.name}</h5>
                     <p class="card-text">${this.showNumberOfStars(product)}</p>
-                    <p class="card-text"><del>${product.price}</del> ${product.discountPrice} lei</p>
-                    <div class="p-2 icon meniuTgl">
-                        <i class="bi bi-trash" onclick="removeProduct(${product.id})" title="Remove Product"></i>
-                        <i class="bi bi-gear" onclick ="updateProductById(${product.id})" title="Update Product"></i>
-                        <i class="bi bi-cart4" onclick ="addToCart(${product.id})" title="Add to Cart"></i>
-                        <i class="bi bi-heart" onclick="addToFavorites(${product.id})" title="Add to Wishlist"></i>
-                    </div>                       
+                    <p class="card-text"><del>${product.price}</del> ${product.discountPrice} lei</p>                                         
                 </div>
             </div>`
         });
