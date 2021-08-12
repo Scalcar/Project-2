@@ -107,6 +107,7 @@ class HttpService {
         .then(response => response.text())
         .then(result => {
             commonService.showInfoMessage(result);
+            showProduct();          
         })
         .catch(error => {
             commonService.showInfoMessage(error);

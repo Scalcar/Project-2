@@ -240,6 +240,19 @@
     font-size: 26px;
     color: blue;
 }
+.hOR2 :hover {
+    font-size: 28px;
+    color: red;
+}
+.hOB2 :hover {
+    font-size: 29px;
+    color: blue;
+}
+.bgLetter {
+    background: url(https://images.pexels.com/photos/3714060/pexels-photo-3714060.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940) no-repeat;
+    background-size: cover;
+    background-position: 50%;
+}
 
 
 

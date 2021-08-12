@@ -273,7 +273,8 @@ function removeFromFavorites2(id) {
       .then(product => {
          let response = productService.removeFromFavoritesAnotherMethod(product,id);
          commonService.showInfoMessage(response);
-         refreshProducts();
+         showFavorites();
+         updateFavoriteCount();
       })
       .catch(error => {
          commonService.showInfoMessage(error);
@@ -282,7 +283,7 @@ function removeFromFavorites2(id) {
 
 function addRating(id, rating){
    httpService.addRating(id, rating);
-   showProduct();
+   // showProduct();
 }
 
 function addReview(){
@@ -354,18 +355,20 @@ function modifyQuantityOfMinus(id) {
 
 function applyPromoCode(){
    let code = document.getElementById('promoCode').value;
-   let voucher = '#1213';
-   if (code == voucher) {
-      let cart = localStorage.getItem("cartProducts");
-      if(cart.length >= 3){
+   let voucher = '#1213';  
+   let cart = localStorage.getItem("cartProducts");
+   if(cart.length >= 3){
+      if (code == voucher) {           
          applyOnce();
-         refreshProducts();
-      }else{
+         showCart();
+         updateCartCount();     
+      }else {
+         commonService.showInfoMessage('Promo Code entered not valid. Try again!');
+      }
+
+   }else{
          commonService.showInfoMessage('The cart is empty. Buy something first!');
-      } 
-   }else {
-      commonService.showInfoMessage('Promo Code entered not valid. Try again!');
-   }
+   } 
 } 
 
 function usePromoCode() {
@@ -394,6 +397,7 @@ function resetCart() {
 function resetFavorites() {
    let response = productService.removeAllProductsFromFavorites();
    commonService.showInfoMessage(response);
+   showFavorites();
    updateFavoriteCount();
 }
 

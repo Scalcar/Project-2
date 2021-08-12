@@ -115,10 +115,28 @@
                                 <button type="button" class="btn btn-outline-primary" onclick="logOut()">Log Out</button>
                             </div>
                         </div>
-                        <!-- <div class="form-floating mb-3 mt-4 w-75 display2">
-                            <input type="text" class="form-control text-primary" id="changeName" placeholder="New Name">
-                            <label for="changeName">New Name</label>
-                        </div> -->
+
+                        <!-- Button trigger modal -->
+                        <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+                            <div class="modal-dialog modal-dialog-centered modal-lg">
+                              <div class="modal-content" style="height: 550px;">
+                                <div class="modal-header bg-dark">
+                                  <h5 class="modal-title text-light" id="staticBackdropLabel">NEWSLETTER</h5>
+                                  <button type="button" class="btn-close bg-light" data-bs-dismiss="modal" aria-label="Close"></button>
+                                </div>
+                                <div class="modal-body bgLetter">
+                                    <div class="text-center text-light col-9 m-auto mt-3">Join to get free and fresh content delivered automatically each time we publish.</div>                        
+                                    <div class="input-group mb-3 mt-4 w-50 m-auto">
+                                        <input type="text" class="form-control" placeholder="email@example.com" aria-label="email@example.com" aria-describedby="button-addon2">
+                                        <button class="btn btn-dark" type="button" id="button-addon2">Subscribe</button>
+                                    </div>
+                                </div>
+                                <div class="modal-footer bg-dark justify-content-center">
+                                    <p class="text-center text-light">We thank you for your support. Have a nice day!</p>                                 
+                                </div>
+                              </div>
+                            </div>
+                        </div>                      
                     </div>
                 </div>
             </div>

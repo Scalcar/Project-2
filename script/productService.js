@@ -33,7 +33,7 @@ class ProductService { // var productService = new ProductService();
                             <div class="hOR">
                                 <i class="bi bi-heart" onclick="addToFavorites(${product.id})" title="Add to Wishlist"></i>
                             </div>
-                        </div>
+                        </div>                        
                     </div>                       
                 </div>
             </div>`
@@ -61,7 +61,7 @@ class ProductService { // var productService = new ProductService();
                             <div class="footerList my-2 ms-2 card-text">
                                 <p>
                                     <ul class="list-inline my-1">
-                                        Share this: 
+                                        <p>Share this:</p> 
                                         <li class="list-inline-item"><a class="px-1 py-1 mt-1" href="#" title="Facebook"><i class="bi bi-facebook text-secondary"></i></a></li>
                                         <li class="list-inline-item"><a class="px-1 py-1" href="#" title="Youtube"><i class="bi bi-youtube text-secondary"></i></a></li>
                                         <li class="list-inline-item"><a class="px-1 py-1" href="#" title="Instagram"><i class="bi bi-instagram text-secondary"></i></a></li>               
@@ -202,7 +202,7 @@ class ProductService { // var productService = new ProductService();
                         <button type="button" class="btn btn-outline-primary" onclick ="modifyQuantityOfPlus(${product.id})">+</button>
                     </div>
                 </div></td>
-                <td style="width:0px"; class="hOR"><i class="bi bi-trash icon2" onclick="removeFromCart2(${product.id})"></i></td>
+                <td style="width:0px"; class="hOR2"><i class="bi bi-trash icon2" onclick="removeFromCart2(${product.id})"></i></td>
             </tr>`
             // j++;
         })
@@ -227,31 +227,41 @@ class ProductService { // var productService = new ProductService();
     getFormatedFavorites() {
         let favorites = '';
         favorites = `
-            <tr>
-                <th>Nr</th>
-                <th>Name</th>
-                <th>Links</th>
-                <th>Remove</th>
-            </tr>`;
+        <thead>
+            <tr>    
+                <th scope="col">Nr</th>                       
+                <th scope="col">Image</th>
+                <th scope="col">Product</th>               
+                <th scope="col">Links</th>
+                <th scope="col">Remove</th>
+            </tr>
+        </thead>
+        <tbody>`;
         var i = 1;
         this.favoriteList.forEach(function (product) {
             favorites += `
-                <tr>
-                    <td>${i}</td>
-                    <td>${product.name}</td>
-                    <td><a href="#" onclick ="openProduct(${product.id})">View</a></td>
-                    <td><p onclick = "removeFromFavorites2(${product.id})"><span id="remove">x</span></p></td>
-                </tr>`;
+            <tr>  
+                <td>${i}</td>                              
+                <td><img src="${product.productUrl}" alt="${product.name}" class="w-25"></td>
+                <td style="width: 180px;">${product.name}</td>                
+                <td style="width:20px"; class="hOB2"><i class="bi bi-eye icon2" onclick="openProduct(${product.id})"></i></td>
+                <td style="width:20px"; class="hOR2"><i class="bi bi-trash icon2" onclick = "removeFromFavorites2(${product.id})"></i></td>
+            </tr>`
             i++;
         })
         favorites += `
+        </tbody>
+        <tfoot>
             <tr>
                 <td></td>
-                <td>Total:</td>
-                <td>${this.favoriteList.length}</td>
                 <td></td>
-            </tr>`;
-        return favorites;
+                <td></td>
+                <td></td>
+                <td></td>              
+            </tr>
+        </tfoot>`;
+        return favorites;             
+        // <a href="#" onclick ="openProduct(${product.id})">View</a>             
     }
 
     showProductsByName(query, products) {

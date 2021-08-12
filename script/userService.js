@@ -53,6 +53,9 @@ class UserService{
                             <p class="card-text ms-2">Age: ${profile.age}</p>
                             <p class="card-text ms-2">Gender: ${profile.gender}</p>                                                                   
                         </div>
+                        <button type="button" class="btn btn-outline-primary w-50 ms-4" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
+                            Subscribe
+                        </button>
                     </div>
                 </div>
             </div>`;
