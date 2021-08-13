@@ -188,12 +188,10 @@ function addToFavorites(id) {
 function addToCart(id) {
    let promise = httpService.getProductbyId(id);
    promise
-      .then(product => {
-         let test = product;
-         test.quantity = 1;
-         let response = productService.addProductToCart(test,id);
-         commonService.showInfoMessage(response);
-         productService.updateCartStorage();
+      .then(product => {                           
+         let response = productService.addProductToCart(product,id);
+         commonService.showInfoMessage(response);         
+         // productService.updateCartStorage();
          // refreshProducts();
          updateProductsCount();
       })

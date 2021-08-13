@@ -361,13 +361,24 @@ class ProductService { // var productService = new ProductService();
     }
 
     addProductToCart(product, id) {
+        var j = 1;
         if (!this.cartList.some(product => product.id === id)) {
             this.cartList.push(product);
+            product.quantity = j;
+            localStorage.setItem("count", JSON.stringify(j));
             this.updateCartStorage();
             return `Product ${product.name} was added to cart`;
-        } else {
-            product.quantity = parseInt(product.quantity) + parseInt(1);
-            // this.updateCartStorage();
+        } else {   
+            j = Number(localStorage.getItem('count'));                      
+            j = ++j;           
+            product.quantity = j;                 
+            localStorage.setItem("count", JSON.stringify(j));
+            for (var i = 0; i < this.cartList.length; i++) {
+                if (this.cartList[i].id == id) {
+                    this.cartList.splice(i, 1, product);
+                    this.updateCartStorage();
+                }
+            }              
             return `Product ${product.name} is already in cart`;
         }
     }
