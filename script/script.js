@@ -80,8 +80,8 @@ function showProfile(){
 function removeProduct(id){
    httpService.deleteProductById(id);
 
-  showProducts();
-  updateProductsCount();
+//   showProducts();
+//   updateProductsCount();
 }
 
 //functia este apelata cand se da click pe un produs
@@ -168,7 +168,7 @@ function updateProduct() {
    let product = {"id": Number(productId), "name": name, "description": description, "price": price, "discountPrice": discountPrice, "productUrl": productUrl};
 
    httpService.updateProduct(product);
-   showUpdateDetailProduct();
+   // showUpdateDetailProduct();
 }
 
 function addToFavorites(id) {

@@ -339,7 +339,7 @@ class ProductService { // var productService = new ProductService();
             product.discountPrice = product.discountPrice * [(100 - percent) / 100];
             this.updateCartStorage();
         });
-        return `Congrats! Now ${percent}% discount for products in the cart`;
+        return `Congrats! You have ${percent}% discount for each product in the cart`;
     }
 
     updateCartStorage() {
@@ -376,9 +376,9 @@ class ProductService { // var productService = new ProductService();
         if (!this.favoriteList.some(product => product.id === id)) {
             this.favoriteList.push(product);
             this.updateFavoritesStorage();
-            return `Product ${product.name} was added to favorites`;
+            return `Product ${product.name} was added to wishlist`;
         } else {
-            return `Product ${product.name} is already in favorites`;
+            return `Product ${product.name} is already in wishlist`;
         }
     }
 
@@ -422,7 +422,7 @@ class ProductService { // var productService = new ProductService();
             if (this.favoriteList[i].id == id) {
                 this.favoriteList.splice(i, 1);
                 this.updateFavoritesStorage();
-                return `Product ${product.name} was removed from favorites`;
+                return `Product ${product.name} was removed from wishlist`;
             }
         }
         return `Product with id ${id} doesn't exist`;
@@ -442,9 +442,9 @@ class ProductService { // var productService = new ProductService();
         if (this.favoriteList.length >= 1) {
             this.favoriteList.splice(0, this.favoriteList.length);
             this.updateFavoritesStorage();
-            return 'You have removed all products from favorites';
+            return 'You have removed all products from wishlist';
         } else {
-            return 'The favorites list is empty';
+            return 'The wishlist is empty';
         }
     }
 

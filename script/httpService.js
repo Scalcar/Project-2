@@ -81,6 +81,7 @@ class HttpService {
         .then(response => response.text())
         .then(result => {
             commonService.showInfoMessage(result);
+            showUpdateDetailProduct();
             window.setTimeout( function() {
                 window.location.href = 'products.html'
             }, 4000);
@@ -95,6 +96,8 @@ class HttpService {
         .then(response => response.text())
         .then(result => {
             commonService.showInfoMessage(result);
+            showProducts();
+            updateProductsCount();
         })
         .catch(error => {
             commonService.showInfoMessage(error);
